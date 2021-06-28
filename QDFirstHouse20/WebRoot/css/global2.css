@@ -1,0 +1,31 @@
+body{
+	scrollbar-face-color: #f5f5f5;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-shadow-color: #999999;
+	scrollbar-3dlight-color: #999999;
+	scrollbar-arrow-color: #999999;
+	scrollbar-track-color: #f7f7f7;
+	scrollbar-darkshadow-color: #ffffff;
+	margin:0;
+	padding:0;
+	color:#000000;
+	background: #FFFFFF;
+	font-size:12px;
+	font-family: "宋体", "新宋体", Arial, Tahoma;
+}
+input,textarea,select{
+	margin:0;
+	padding:0;
+	color: #A50029;
+	background-color: #D0EBF9;
+}
+a{text-decoration:none;}
+a:link {color: #A50029;}
+a:visited {color: #A50029;}
+a:hover {
+	color: #FF9900;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "楷体_GB2312";
+}
+a:active {color: #A50029;}

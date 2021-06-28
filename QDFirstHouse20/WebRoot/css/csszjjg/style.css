@@ -1,0 +1,391 @@
+/* CSS Document */
+
+div,form,img,ul,ol,li,dl,dt,dd {margin: 0; padding: 0; border: 0;font-family: "宋体", "Arial";font-size: 12px;}
+h1,h2,h3,h4,h5,h6 { margin:0; padding:0;}
+table,td,tr,th{font-size:12px;font-family: "宋体", "Arial";}
+
+
+/* 链接颜色 */
+a:link {color: #1f3a87; text-decoration:none;}
+a:visited {color: #1f3a87; text-decoration:none;}
+a:hover {color: #bc2931; text-decoration:none;}
+
+/* 链接颜色(退出) */
+a.t_01:link {color: #ffffff; text-decoration:underline;}
+a.t_01:visited {color: #ffffff; text-decoration:underline;}
+a.t_01:hover {color: #ED9656; text-decoration:none;}
+
+/* 顶部样式 */
+.globalMenu{margin:0 auto; width:1014px; height:98px; background:#F2F6FB; border:0px solid #CBCBCB;padding-bottom:1px;}
+.globalMenu .content{ float:left; width:1014px;height:98px;padding:0px 0 0;font-size:14px;background:url(../images/top_bg.jpg);}
+.globalMenu .content.loginout{text-align: right;padding-right:10px;padding-top:10px;font-size:12px;color:#ffffff;}
+.globalMenu .content.loginname{text-align: right;padding-right:10px;padding-top:7px;font-size:12px;color:#ffffff;}
+
+/* 导航 */
+.topMenu{
+	float:right;
+	padding-top:1px;
+	height:26px;
+	width: 1024px;
+	clear: both;
+	background-image: url(../../images/buton_04.jpg);
+}
+a.search {
+	float:left;
+}
+
+a.search:link, a.search:visited
+{	
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	height: 22px;
+	line-height: 20px;
+	width: 95px;
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	font-size: 14px;
+	margin-right: 3px;
+	padding-top: 3px;
+	text-align: center;
+	background-image: url(../images/nav-2.gif);
+	background-position: center bottom;
+
+}
+a.search:hover
+{
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	height: 22px;
+	line-height: 20px;
+	width: 95px;
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	font-size: 14px;
+	margin-right: 3px;
+	padding-top: 3px;
+	text-align: center;
+	background-image: url(../images/nav-3.gif);
+	
+	background-position: center bottom;
+}
+
+a.search_click {
+	float:left;
+}
+
+a.search_click:link, a.search_click:visited
+{	
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	height: 22px;
+	line-height: 20px;
+	width: 95px;
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	font-size: 14px;
+	margin-right: 3px;
+	padding-top: 3px;
+	text-align: center;
+	background-image: url(../images/nav-3.gif);
+	
+	background-position: center bottom;
+
+}
+
+/* 主体 */
+.leftMenu
+{
+	margin:0;
+	width:161px;
+	height:1500px;
+	background-image: url(../../images/left_button.jpg);
+}
+.leftMenu ul{
+	margin:0;
+	padding:0;
+	color: #007AC4;
+	text-decoration: none;
+}
+.leftMenu li{
+	float:left;
+	margin:0;
+	padding:0px;
+	font-size:12px;
+	list-style-type:none; 
+	width:160px; 
+	height:38px;
+	line-height:38px;
+	cursor:hand;
+}
+
+.leftMenum_1{
+	background:url(../images/left_menu_bg.png) right 0px no-repeat;
+}
+
+.leftMenum_2{
+	background:url(../images/left_menu_bg_on.png) right 0px no-repeat;
+}
+
+.allWh .whbdy {
+	BACKGROUND-IMAGE: url(../images/frame2.gif); BACKGROUND-REPEAT: repeat-x
+}
+.hide {
+	DISPLAY: none
+}
+.line4 {
+	BACKGROUND-IMAGE: url(../images/frame1.gif); BACKGROUND-REPEAT: no-repeat
+}
+.selWh LI.on {
+	BACKGROUND-IMAGE: url(images/frame1.gif); BACKGROUND-REPEAT: no-repeat
+}
+.selWh {
+	BACKGROUND-POSITION: 0px -49px; HEIGHT: 34px; BACKGROUND-COLOR: #fff
+}
+.selWh LI {
+	MARGIN-TOP: 2px; FLOAT: left; WIDTH: 79px; CURSOR: pointer; HEIGHT: 32px; TEXT-ALIGN: center
+}
+.selWh LI A {
+	MARGIN-TOP: 10px; DISPLAY: block; COLOR: #333; TEXT-DECORATION: none
+}
+.selWh LI.on {
+	BACKGROUND-POSITION: -508px 0px
+}
+.selWh LI.on A {
+	FONT-WEIGHT: bold; COLOR: #8a6b0d
+}
+.selWh LI.on A:hover {
+	TEXT-DECORATION: none
+}
+.allWh .bdy {
+	MARGIN: 15px 15px 0px; COLOR: #333
+}
+
+/**--------------------------------------------------*/
+
+/* 为input表单域确定基本字体、大小 */
+input {
+    font-family: "宋体", "Arial";
+    font-size: 12px;
+}
+
+
+
+/* 为多行文本框确定基本字体、大小 */
+textarea {
+    font-family: "宋体", "Arial";
+    font-size: 12px;
+}
+
+/* 只显示文本框的四周边线等 */
+input.text01 {border: #9AA1B2; border-width: 1px;}
+
+
+/* 设置复选框属性 */
+input.checkbox01 {
+	margin: 0px;
+	padding: 0px;
+	height: 17px;
+	width: 17px;
+	border: 0px none;
+}
+
+/*用于数据录入时,下拉列表框是深色的*/
+select.selectdark {background-color: #D1DEE6 }
+
+/* 设置下拉框的属性 */    
+select.sl01 {font-family: "宋体", "Arial";
+    font-size: 12px; background-color: #D1DEE6 }
+	
+	/* 为下拉式列表框确定基本字体、大小 */
+select {
+    font-family: "宋体", "Arial";
+    font-size: 12px;
+}
+
+
+
+/*用于数据录入时,textarea框是深色的*/
+textarea.testareadark {background-color: #D1DEE6 }
+
+/* 未访问链接文本的前景色，链接文本没有下划线 */
+a.s01:link {  color: #0000CE; text-decoration: none}
+
+/* 已访问链接文本的前景色，链接文本没有下划线 */
+a.s01:visited {  color: #0000CE; text-decoration: none}
+
+/* 鼠标在链接上滑动时，链接文本的背景色 */
+a.s01:hover {  color: #FF3333; text-decoration: underline}
+
+
+/*设置查询条件表格外框样式*/
+.table01 {border: #9AA1B2 1px solid;height:50;}
+
+
+/* 设置单元格的边线、风格及颜色 */
+.border_none {border: 0px}
+.border_all {border: #9AA1B2 1px solid;}
+.table_all {border: #9AA1B2;border-style: solid; border-width: 1px 1px 1px 1px;border-collapse:collapse;}
+.table_flow {z-index:1; overflow:scroll;height:110px;overflow-x:auto;}
+.table_flow2 {z-index:1;height:80px;overflow-x:auto;}
+.table_flow_human {z-index:103; overflow:scroll;height:300px;overflow-x:auto;}
+.table_head {border: #9AA1B2;border-style: solid;border-width:1px 1px 1px 1px;height:25px;text-align:center;background-color:BECEDD;}
+.sub_window_head {border: #9AA1B2;border-style: solid;border-width:1px 1px 1px 1px;height:28px;background-color:#C6D3EF;}
+
+.topbar{background-image:url(../images/demo_images/topbar.gif);font-weight:bold;color:#1B2F78;height:27}
+.topbar2{background-color:#EBF2F5;font-weight:bold;color:#1B2F78;height:26;border: #9AA1B2; border-style: solid; border-width: 0px 0px 1px 1px;}
+.topbar_img{font-weight:bold;color:#1B2F78;}
+.trbgcolor1 {background-color: #EFF3FF;text-align:right;border: #9AA1B2; border-style: solid; border-width: 0px 0px 1px 1px;height:26;width:150}
+.trbgcolor2 {border: #9AA1B2; border-style: solid; border-width: 0px 0px 1px 1px;padding:4;}
+.trlight {background-color: #EFF3FF;border: #9AA1B2;border-style: dotted;border-width:1px 1px 1px 1px;height:25px;text-align:center;}
+.trdark {background-color: #FFFFFF;border: #9AA1B2;border-style: dotted;border-width:1px 1px 1px 1px;height:25px;text-align:center;}
+
+.fixedHeaderTr    
+{    
+	position:relative;    
+	top:expression(this.offsetParent.scrollTop);  
+}
+
+.menu_act{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   font-weight:bold;
+   color:#ffffff;
+   background-image:url(../images/demo_images/menu_act.gif); 
+   text-align:center;
+   valign:bottom;
+   width:102px;
+   height:22;
+   cursor:hand;
+   padding-top:3px;
+}
+
+/**设置一级菜单非激活样式**/
+.menu_unact{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   color:#000000;
+   background-image:url(../images/demo_images/menu_unact.gif); 
+   text-align:center;
+   valign:bottom;
+   width:102px;
+   height:22;
+   cursor:hand;
+   padding-top:3px;
+}
+
+/**设置二级菜单激活样式**/
+.menu2_act{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   font-weight:bold;
+   color:#ffffff;
+   background-image:url(../images/demo_images/menu2_act.gif); 
+   text-align:center;
+   valign:bottom;
+   width:125px;
+   height:26;
+   cursor:hand;
+}
+
+/**设置二级菜单非激活样式**/
+.menu2_unact{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   color:#6A6A6A;
+   background-image:url(../images/demo_images/menu2_unact.gif); 
+   text-align:center;
+   valign:bottom;
+   width:125px;
+   height:26;
+   cursor:hand;
+}
+
+/**设置二级菜单有三级菜单激活样式**/
+.menu3_act{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   font-weight:bold;
+   color:#ffffff;
+   background-image:url(../images/demo_images/menu3_act.gif); 
+   text-align:center;
+   valign:bottom;
+   width:125px;
+   height:26;
+   cursor:hand;
+}
+
+/**设置二级菜单有三级菜单非激活样式**/
+.menu3_unact{
+   font-family: "宋体", "Arial";
+   font-size: 14px;
+   color:#6A6A6A;
+   background-image:url(../images/demo_images/menu3_unact.gif); 
+   text-align:center;
+   valign:bottom;
+   width:125px;
+   height:26;
+   cursor:hand;
+}
+
+/**设置三级菜单激活样式**/
+.menu4_act{
+   font-family: "宋体", "Arial";
+   font-size: 12px;
+   font-weight:bold;
+   color:#ffffff;
+   background-image:url(../images/demo_images/menu4_act.gif); 
+   text-align:center;
+   valign:bottom;
+   width:90px;
+   height:24;
+   cursor:hand;
+}
+
+/**设置三级菜单非激活样式**/
+.menu4_unact{
+   font-family: "宋体", "Arial";
+   font-size: 12px;
+   color:#6A6A6A;
+   background-image:url(../images/demo_images/menu4_unact.gif); 
+   text-align:center;
+   valign:bottom;
+   width:90px;
+   height:24;
+   cursor:hand;
+}
+
+/**设置按钮样式**/
+.button01{background:url(../images/demo_images/but01.gif);border:0px;width:83px;height:26px; color:#000000;cursor:pointer}
+
+/**底部按钮样式**/
+.bottom_button{    
+	position:relative;    
+	/**top:expression(this.offsetParent.scrollTop-80);*/
+	border: #4069A5 1px solid;
+	background-color:E6E9ED;
+}
+
+/**屏蔽整个窗口的样式**/
+.hiddenDiv{
+	position:absolute;
+	top:expression(this.offsetParent.scrollTop);
+	left:expression(this.offsetParent.scrollLeft);
+	width:100%;
+	height:100%;
+	display:none;
+	filter:alpha(opacity=50);
+	background-color:888888;
+	z-index:9;
+}
+
+.editDiv{
+	position:absolute;
+	display:none;
+	z-index:101;
+}

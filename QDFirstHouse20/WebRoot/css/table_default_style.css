@@ -1,0 +1,164 @@
+
+
+
+
+
+
+/* 链接颜色 */
+a:link {color: #1f3a87; text-decoration:none;}
+a:visited {color: #1f3a87; text-decoration:none;}
+a:hover {color: #bc2931; text-decoration:none;}
+
+.body_main {
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+	font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+	text-decoration: none;
+	font-size: 12px;
+	background-color: #E5F6FF;
+	
+}
+.default_tableCss{
+	width:100%;
+	border:1 ;
+	cellspacing:0;
+	cellpadding：1;
+	border-collapse:collapse;
+	border:none;
+	mso-border-alt:solid #CCCCCC 1px;
+}
+.default_tableCss2{ 
+	width:100%;
+	border:1 ;
+	cellspacing:0;
+	cellpadding：1;
+	border-collapse:collapse;
+	border:none;
+	mso-border-alt:solid #CCCCCC 1px;
+}
+
+.default_row_tr{ 	background-color:expression('#E5F6FF,#E5F6FF'.split(',')[rowIndex%2]); 
+}
+
+.default_row_tr th{ 
+	  background: none repeat scroll 0 0 #c6dbf7;
+	  border: 1px dotted #0099ff;
+	  color: #000000;
+	  text-align: center;
+	  font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+	  font-size: 13px;
+	  height: 28px;
+}
+
+.default_row_tr .sortable{ 
+	cursor:pointer;
+}
+
+
+.input_required:before{
+				content:"* ";
+				color:red;
+			}
+
+
+.default_row_tr td{
+	border: 1px dotted #d5d5d5;
+    color: BLACK;
+    font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 9pt;
+    font-style: normal;
+	text-align: center;
+	font-size: 12px;
+    height: 25px;
+}
+
+.page_tr_style{
+	background-color:#E5F6FF;
+}
+
+.page_tr_style td{
+	background-color:#E5F6FF;
+    color: BLACK;
+	font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 9pt;
+    font-style: normal;
+	text-align: center;
+	height: 18px;
+}
+
+/* ie不兼容ie版本低 begin */
+.default_row_tr:nth-child(odd) td{
+    border: 1px dotted #000080;
+    color: BLACK;
+    font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+	text-align: center;
+}
+
+.default_row_tr:nth-child(even) td{
+    
+    border: 1px dotted #000080;
+    color: BLACK;
+    font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+	text-align: center;
+}
+/* ie不兼容ie版本低 end */
+
+.default_headerOut {
+    background: none repeat scroll 0 0 #cde8f3;
+    border: 1px dotted #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 9pt;
+}
+
+.tableInfo {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+}
+
+table, td, tr, th {
+    font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 12px;
+}
+
+.tableTitle {
+    background-color: #d9e4f2;
+    background-repeat: no-repeat;
+    color: black;
+    height: 24px;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    height: 30px;
+}
+
+.Control {
+    border: 1px solid black;
+    font-size: 9pt;
+    text-align: center;
+    width: 38px;
+}
+
+.td_input{
+	background-color:#d9e4f2;
+    color: BLACK;
+	font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+    font-size: 9pt;
+    font-style: normal;
+	text-align: center;
+	height: 18px;	
+}
+
+.row_selected{
+	background-color: #ffe48d;
+	}
+	
+.row_hover{
+	background-color: #eaf2ff;
+	}

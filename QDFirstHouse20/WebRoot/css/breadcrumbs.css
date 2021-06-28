@@ -1,0 +1,30 @@
+.breadcrumbs {
+	padding: 0px 12px 0px 0px; line-height: 38px; border-bottom-color: rgb(255, 255, 255); border-bottom-width: 1px; border-bottom-style: solid; position: relative; z-index: auto; min-height: 38px; background-color: rgb(255, 255, 255);
+}
+.breadcrumb {
+	margin: 6px 22px 0px 12px; padding: 0px; border-radius: 0px; color: rgb(255, 255, 255); line-height: 20px; font-size: 13px; display: inline-block; background-color: transparent;
+}
+.breadcrumb > li {
+	display:inline;
+	padding: 0px 3px; color: rgb(85, 85, 85);
+}
+.breadcrumb > li.active {
+	padding: 0px 3px; color: rgb(0, 0, 0);
+}
+.breadcrumb > li > a {
+	color: rgb(76, 143, 189); display: inline-block;
+	text-decoration: none;
+}
+.breadcrumb > li + li:before {
+  font-family: FontAwesome;
+  font-size: 14px;
+  content: ">";
+  color: #b2b6bf;
+  padding: 0;
+  margin: 0 8px 0 0;
+  position: relative;
+  top: 1px;
+}
+.breadcrumb .home-icon {
+	font-size: 20px; margin-right: 2px; margin-left: 2px; vertical-align: top;
+}

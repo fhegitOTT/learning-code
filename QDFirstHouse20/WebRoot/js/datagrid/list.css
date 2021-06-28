@@ -1,0 +1,112 @@
+html,body{width:100%;height:100%;overflow:hidden;white-space:nowrap;}
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0;}
+*{font-family:Microsoft YaHei,Verdana, Geneva, sans-serif;font-size:14px;}
+.table {
+  width: 100%;
+}
+
+.tableColumn {
+  overflow: hidden;
+  /*background: transparent url(tb-bg.gif) repeat-x;*/
+  background-color:#f2f2f2;
+}
+.tableColumn table {
+  width:100%;
+}
+.tableContent table {
+  width:100%;
+}
+
+.tableColumn table tr td {
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  border-left: solid 1px #EEEEEE;
+  border-right: solid 1px #D0D0D0;
+  line-height: 30px;
+  height:30px;
+  white-space:nowrap;
+}
+
+.tableColumn .sortable {
+  cursor: pointer;
+}
+
+.tableColumn .sortable div {
+  position: absolute;
+  width: 7px;
+  height: 9px;
+  z-index: 1;
+}
+
+.tableColumn table tr td input {
+  width: 13px;
+  height: 13px;
+}
+
+.tableContent {
+  /*overflow: auto;
+  overflow-x: hidden;*/
+  background-color: #FFFFFF;
+}
+
+.tableContent table {
+  /*table-layout: fixed;*/
+}
+
+.tableContent table tr.row {}
+.tableContent table tr.high td {
+/*background-color: #f2f2f2;*/
+}
+.tableContent table tr.highless td {
+  background-color: #80E2FF;
+}
+
+
+.tableContent table tr td {
+border-bottom: solid 1px #EAEAEA;
+    border: solid 1px #e6e6e6;
+    line-height: 30px;
+    height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tableContent table tr td span {
+  display: block;
+  margin-left: -1px;
+  margin-right: -1px;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+.tableContent table tr td.box {
+  text-align: center;
+  background: transparent url(checkbox-row-bg.gif) repeat-y 0px 0;
+  border-left: solid 1px #F9F9F9 !important;
+}
+
+
+.tableContent table tr td.box .more-operate {
+  cursor: pointer;
+}
+
+
+.tblmask{
+		position: absolute;
+		z-index: 200;
+		background-color: #ccc;
+		-moz-opacity:0.8;/*Firefox绉佹湁锛岄�鏄庡害50%*/
+		filter:alpha(opacity=80); /*IE婊ら暅锛岄�鏄庡害50%*/
+		opacity:0.8;/*鍏朵粬锛岄�鏄庡害50%*/
+}
+.tableContent .selected td {
+
+  background-color: #f2f2f2 !important;
+  
+}
+
+#griddiv{
+	    padding: 5px 15px 15px 15px;
+	border:none !important;
+}

@@ -1,0 +1,598 @@
+
+2020-06-05 Features: 处理生僻字（daobin）
+                    com.netcom.nkestate.common.ChineseHelper.java
+                    com.netcom.nkestate.system.servlet.filter.XssRequestWrapper.java
+                    com.netcom.nkestate.fhhouse.salecontract.vo.BuyerInfoVO.java
+                    /config/UncommonChineseUnicode.txt
+                    
+                    说明：（1）处理方式，在XssRequestWrapper过滤器里，统一检查参数值是否存在了生僻字，如果存在，则把生僻字转为unicode码，
+                                          保存数据库时，所以字符都做了转unicode码的处理
+                                          数据库查询时，miniframework读取没有做处理，留给VO对象来做转码
+                                （2）以后生僻字有增加了，修改 UncommonChineseUnicode.txt即可
+                                （3）本次修改显示只处理了合同买方姓名，显示时做了处理，修改了BuyerinfoVO.java的getBuyerName方法如下所示
+                public String getBuyerName() {
+					return ChineseHelper.unicodeToUtf8(buyerName);
+				}        
+                                （4）如果有其他字段也出现了生僻字，修改相应VO的get***()方法，如getBuyerName（）方法
+             
+
+####### Release V_20_05_26,Release Date(2020-05-26) #######
+2020-05-26 Improve: 一手房合同表增加模板字段
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractDealVO.java
+					
+####### Release V_20_05_15,Release Date(2020-05-15) #######
+2020-05-15 Improve: 许可证改进
+					1、许可证房屋关联按钮不允许重复点
+					2、许可证打印查询字典表直接从登记查询，不允许用dblink查询
+					com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+					com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+					com.netcom.nkestate.fhhouse.permit.bo.PermitBO.java
+					\WebRoot\WEB-INF\jsp\fhhouse\permit\HouseQuerySelect.jsp
+
+2020-05-15 fixbug:  内网预售许可证受理新增的保存开关控制
+	                \jsp\fhhouse\permit\PermitEdit.jsp
+
+####### Release V_20_04_24,Release Date(2020-04-24) #######
+2020-04-24 fixbug:  内网预售许可证受理新增的保存开关控制以及后台提醒
+	                \jsp\fhhouse\permit\PermitEdit.jsp
+	                com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+	                
+####### Release: V_20_04_16 ,Release Date(2020-04-17) #######
+2020-04-17 fixbug:  预售出售合同编辑按钮控制
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+
+###### Release: V_20_04_29 , Release Date(2020-04-29) ######
+2020-04-29 Improve: 1)青岛一手房登陆增加key
+                      /WebRoot/OuterLogin.jsp
+                      /WebRoot/WEB-INF/jsp/OuterIndex.jsp
+####### Release: V_20_04_15 ,Release Date(2020-04-15) #######
+2020-04-15 Improve: 预售出售的合同编辑和模板的日期设为不可编写，只能选择
+                                     预售合同和模板的第七条的（二），第十一条的（一），第二十一条的（二）
+                                     出售合同和模板的第五条，第八条的（二），第十二条的（一），第十八条的（二）
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractSign.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+	                \WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+	    
+####### Release: V_20_04_09 ,Release Date(2020-04-09)  上线时间(2020-04-15)#######	
+2020-04-09 Improve: 合同计价条款调整
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractDetailCsVO.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractDetailYsVO.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractTemplateCsVO.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractTemplateYsVO.java
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\BuyerInfoSave.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractSign.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+					
+
+####### Release: V_20_04_14 ,Release Date(2020-04-14) #######
+		 com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+
+####### Release: V_20_04_08 ,Release Date(2020-04-08) ####### 
+		com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+		com.netcom.nkestate.fhhouse.permit.bo.PermitBO.java
+		com.netcom.nkestate.fhhouse.permit.dao.PermitDAO.java
+		com.netcom.nkestate.fhhouse.project.action.StartUnitAction.java
+		com.netcom.nkestate.fhhouse.project.vo.StartUnitVO.java
+		com.netcom.nkestate.fhhouse.project.bo.StartUnitBO.java
+		com.netcom.nkestate.fhhouse.project.dao.StartUnitDAO.java
+		com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+		com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+		/WebRoot/js/HouseQuery.js
+		/WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQuery.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQuerySelect.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQueryStateSelect.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/permit/PermitStatisFrame.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/permit/PermitStatisList.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/ProjectEdit.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/PresellEdit.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/startUnit/StartUnitInfo.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/startUnit/StartUnitQueryList.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/startUnit/StartUnitReason.jsp
+		/WebRoot/WEB-INF/jsp/fhhouse/project/startUnit/StartUnitReasonList.jsp
+
+
+####### Release: V_20_04_08 ,Release Date(2020-04-08) #######
+2020-04-08 Improve: 登记申请书修改
+					\WebRoot\WEB-INF\jsp\fhhouse\query\sellcontract\ContractApply.jsp
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractApply.jsp
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\SelectApplicationPrint.jsp
+                    /com/netcom/nkestate/fhhouse/query/action/ContractQueryAction.java
+
+
+####### Release: V_20_03_30 ,Release Date(2020-03-30) #######	
+2020-03-27 Improve: 一手房合同签约买方检查港澳台居住证
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\BuyerInfoSave.jsp
+
+####### Release: V_20_03_25 ,Release Date(20_03_25) #######	
+2020-03-24 Improve: 限购合同检查可以配置成仅仅检查个人买方，合同中可以同时存在个人和企业买方
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+
+####### Release: V_20_01_16 ,Release Date(2020-01-16) #######	
+		2020-01-16 added by xl 修改获取机构编码方式
+		/com/netcom/nkestate/fhhouse/query/action/ContractPdfAction.java
+		/com/netcom/nkestate/framework/util/SealAutoPdf.java
+		/com/netcom/nkestate/fhhouse/query/bo/ContractPdfBO.java
+####### Release: V_19_09_29 ,Release Date(2019-09-29) #######
+        2019-09-29 added by gcf 新增检查108登记小类。 
+        com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+####### Release: V_19_09_10 ,Release Date(2019-09-10) #######
+        2019-09-10 修复合同甲方密码重置页面,企业代码中包含中文无法查询到企业的问题.
+        WEB-INF/jsp/fhhouse/manage/pwdmodify/EnterPriseQuery.jsp
+####### Release: V_19_11_20 ,Release Date(2019-11-20) #######
+		editBuyer1：接口分页bug
+		WebRoot/WEB-INF/jsp/fhhouse/salecontract/signcontract/BuyerSignInfo.jsp
+####### Release: V_19_07_17 ,Release Date(2019-07-17) #######
+2019-07-17 修复预售合同pdf问题。
+		com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+		com.netcom.nkestate.fhhouse.salecontract.vo.PresellContractVO.java
+####### Release: V_19_05_17 ,Release Date(2019-05-17) #######
+2019-05-17 需求:1、合同确认的时候，增加检查合同对应的房屋是否是人工干预可售状态，如果是，则不能确认签约。
+		2、合同确认的时候，增加检查该合同对应的开盘单元尚未开盘或者审核不通过的状态，如果是，则不能签约。
+		3、记录人工干预可售或者不可售的日志。
+		com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+		com.netcom.nkestate.fhhouse.project.action.HouseAction.java
+		com.netcom.nkestate.fhhouse.project.vo.HouseSellLogVO.java
+		
+####### Release: V_19_05_15 ,Release Date(2019-05-15) ####### 
+2019-05-15 需求:预售许可检查土地产权增加登记小类，327
+		com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+		
+####### Release: V_19_04_25 ,Release Date(2019-04-25) ####### 
+2019-04-25 Fix Bug:交接书中分摊面积强转报错修复、省市字典表key强转报错修复
+com.netcom.nkestate.system.bo.DictionaryBO.java
+			       .salecontract.action.CompanyManagerAction.java
+WebRoot/WEB-INF/jsp/fhhouse/salecontract/manage/DeliverApplyView.jsp
+
+
+####### Release: V_19_04_08 ,Release Date(2019-04-08) ####### 
+				com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+				com.netcom.nkestate.fhhouse.permit.action.TransactionAction.java
+				com.netcom.nkestate.fhhouse.permit.bo.PermitBO.java
+				com.netcom.nkestate.fhhouse.permit.dao.PermitDAO.java
+				WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQueryStateSelect.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitEdit.jsp
+				
+####### Release: V_19_04_08 ,Release Date(2019-04-08) ####### 
+2019-01-25 Fix Bug:修复房屋交接书空白问题
+				WebRoot/WEB-INF/jsp/fhhouse/salecontract/manage/DeliverQueryInfo.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/salecontract/manage/DeliverQueryList.jsp
+				com.netcom.nkestate.fhhouse.query.action.ContractPdfAction.java
+				com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+				
+####### Release: V_19_03_27 ,Release Date(2019-03-27) ####### 
+2019-03-27 improve:完善内网用户和外网用户修改密码的问题。
+				WebRoot/WEB-INF/classes/com/netcom/nkestate/system/action/LoginAction.class
+				WebRoot/WEB-INF/jsp/OuterIndex.jsp
+				WebRoot/WEB-INF/jsp/InnerIndex.jsp
+
+####### Release: V_19_03_24 ,Release Date(2019-03-24) ####### 
+2019-01-25 Fix Bug:新增预售许可功能
+				com.netcom.nkestate.common.CharSet.java
+				com.netcom.nkestate.common.Constant.java
+				com.netcom.nkestate.common.NKRSAUtil.java
+				com.netcom.nkestate.common.ListUtil.java
+				com.netcom.nkestate.fhhouse.interfaces.action.RealestateFinder.java
+				com.netcom.nkestate.fhhouse.interfaces.bo.RealestateBO.java
+				com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.CHFlatVO.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.CHHouseTypeVO.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.CurrentCerLandSubUsesVO.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.HouseHintVO.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.IRUnitRightView.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.RHouseRightView.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.RLandRightView.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.TempRHouseRightView.java
+				com.netcom.nkestate.fhhouse.interfaces.vo.TempRLandRightView.java
+				com.netcom.nkestate.fhhouse.permit.action.PermitAction.java
+				com.netcom.nkestate.fhhouse.permit.action.TransactionAction.java
+				com.netcom.nkestate.fhhouse.permit.bo.PermitBO.java
+				com.netcom.nkestate.fhhouse.permit.dao.PermitDAO.java
+				com.netcom.nkestate.fhhouse.permit.vo.ApplyFileVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.ApplyVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.CfgFileStandardVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.EmptyVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.HouseSaleLogVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.ImageFileVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.LocationVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.PermitVO.java
+				com.netcom.nkestate.fhhouse.permit.vo.RHousePermitVO.java
+				com.netcom.nkestate.fhhouse.FHConstant.java
+				com.netcom.nkestate.framework.util.DateUtil.java
+				com.netcom.nkestate.system.bo.SystemBO.java
+				com.netcom.nkestate.system.dao.SystemDAO.java
+				com.netcom.nkestate.system.servlet.ContextListener.java
+				WebRoot/css/table_default_style.css 
+				WebRoot/js/application.js
+				WebRoot/js/common.js
+				WebRoot/js/HouseQuery.js
+				WebRoot/WEB-INF/jsp/fhhouse/permit/ApplyAdd.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/CheckInfoFrame.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQuery.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQuerySelect.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/HouseQueryStateSelect.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/HouseRelateQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/OnlineHouseStateList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitAddQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitAuditQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitDetail.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitEdit.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitEditQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitFilePrint.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitImageList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitInfoMenu.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitInfoPrint.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitPhotoList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitPhotoListbak.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitPrintQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitQueryFrame.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/PermitQueryList.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/ShowImage.jsp
+				WebRoot/WEB-INF/jsp/fhhouse/permit/ShowImageDetail.jsp
+
+####### Release: V_19_03_21 ,Release Date(2019-01-25) ####### 
+2019-01-25 Fix Bug: 优化查看房屋交接书pdf空白，合同撤销增加是否查封的检查
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+											   .salecontract.action.ContractAction.java
+
+
+####### Release: V_19_01_03 ,Release Date(2019-01-25) ####### 
+2019-01-25 Fix Bug: 合同关联限购令检查有效限购令修改
+					com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					
+####### Release: V_19_01_02 ,Release Date(2019-01-23) ####### 
+2019-01-23 Fix Bug: 基准价格管理修改
+					com.netcom.nkestate.fhhouse.manage.action.PriceManageAction.java
+					com.netcom.nkestate.fhhouse.manage.dao.GuidePriceMgDAO.java
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceUpdate.jsp
+
+####### Release: 发布正式环境 , Release Date(2019-01-21) ####### 
+2019-01-21 improve : 增加sso单点登入                   
+                    
+                     ---配置单点登入过滤器----
+                     /WEB-INF/web.xml 
+                     -----过滤器处理类----                   
+                     com.netcom.nkestate.system.action.IContextInitImpl.java
+                     ---------登入处理-----                    
+                     com.netcom.nkestate.system.action.LoginAction.java
+                     com.netcom.nkestate.system.bo.LoginBO.java
+                     com.netcom.nkestate.system.dao.LoginDAO.java
+                     ------新增单点登入的jar包-----
+                     WEB-INF/lib/sso-client-java-7.0.3.jar  					               
+Release: 
+发布正式环境 , Release Date(2019-01-15)
+2019-01-15 Fix Bug: 交接书打印有误修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+
+####### Release: V_19_01_01 ,Release Date(2019-01-08) ####### 
+2019-01-07 Fix Bug: 1、基准价格管理，基准价格为0时，只删除已有记录，无需在新增记录
+					com.netcom.nkestate.fhhouse.manage.bo.GuidePriceMgBO.java
+					2、合同撤销申请信息必填修改
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelApplyView.jsp
+
+#######  Release: V_18_02_05 ,Release Date(2018-12-30) ####### 
+2018-12-30 Fix Bug: 修复旧合同预览失败的问题,(原因:贷款信息显示的问题)
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+
+####### Release: V_18_02_04 ,Release Date(2018-12-26) ####### 
+2018-12-26 Fix Bug: 装修标准改装修价格
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractSign.jsp
+					审核意见默认为空
+					\WEB-INF\jsp\fhhouse\salecontract\company\ProjectAudit.jsp
+
+####### Release: V_18_02_03 ,Release Date(2018-12-20) ####### 
+2018-12-20 Fix Bug: 出售合同条款7调整
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+
+####### Release: V_18_02_02 ,Release Date(2018-12-12) ####### 
+2018-12-12 Fix Bug: 新增乙方的时候，根据姓名检查住保接口数据，如果存在则不能保存。
+					提交和确认的时候，调用住保接口进行查询，如果存在数据，则给予提示，提交和确认动作终止。
+					com.netcom.nkestate.common.Constant.java
+					com.netcom.nkestate.common.HttpUtil.java
+					com.netcom.nkestate.fhhouse.interfaces.external.ZBReader.java
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ZBQueryLogVO.java
+					com.netcom.nkestate.system.servlet.ContextListener.java
+					
+					nankang.properties文件中增加以下：
+					ZBURL=http://190.111.195.27:7001(正式环境，测试时候请改成测试的，青岛测试环境：http://190.111.141.13:8005)
+					username=admin
+					password=@6$7@21#@65$Z72c@2a54@XX5a330112
+					
+					合同签订入口处增加判断如果房屋存在抵押，则终止合同签订
+					合同确认时增加判断如果房屋存在抵押，则终止合同确认
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\SignContractQueryList.jsp
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+
+####### Release: V_18_02_01 ,Release Date(2018-12-11) ####### 
+2018-12-11 Fix Bug: 老预售合同打印合同金额显示有误修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					com.netcom.nkestate.framework.util.StringUtil.java
+
+####### Release: 发布正式环境 , Release Date(2018-12-04) ####### 
+2018-12-04 Fix Bug: 1、合同确认资金监管付款金额检查修改
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					2、合同撤销申请人合同买方电话信息非必填
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelApplyView.jsp
+
+####### Release: V_18_01_09 ,Release Date(2018-12-03) ####### 
+2018-12-03 Feature：增加给外部系统房屋合同接口
+					com.netcom.nkestate.fhhouse.query.action.ContractPdfAction.java
+					com.netcom.nkestate.fhhouse.query.action.ContractViewAction.java
+					\WEB-INF\web.xml
+
+####### Release: V_18_01_08 ,Release Date(2018-11-27) ####### 
+2018-11-27 Fix Bug: 出售合同页面坐落字段检查长度扩大到100
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WebRoot\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+
+2018-11-20 Fix Bug: 合同限购记录多次提交后保存多个限购问题处理
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.framework.dao.DBSupport.java
+
+####### Release: V_18_01_07 ,Release Date(2018-11-14) ####### 
+2018-11-14 Fix Bug: 房屋管理人工可售更新，时间未更新修改
+					com.netcom.nkestate.fhhouse.project.action.HouseAction.java
+
+2018-11-13 Fix Bug: 1、合同甲方代理人信息能保存
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+                    2、合同模板复制保存
+                    com.netcom.nkestate.fhhouse.salecontract.action.ContractTemplateManageAction.java
+                    3、房屋维修基金数据来源修改
+                    com.netcom.nkestate.common.BaseHouseFundDAO.java
+                    com.netcom.nkestate.common.Constant.java
+                    com.netcom.nkestate.fhhouse.interfaces.dao.HouseFundDAO.java
+                    com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+                    com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+                    com.netcom.nkestate.system.servlet.ContextListener.java
+                    \WEB-INF\web.xml
+					               
+####### Release: 发布正式环境 , Release Date(2018-11-12) ####### 
+2018-11-12 Fix Bug: 1、合同确认一房一价检查修改
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					2、房屋维修基金dblink关闭session操作(已回退)
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+
+####### Release: V_18_01_06 ,Release Date(2018-11-07) ####### 
+2018-11-06 Fix Bug: 模板管理，复制模板时，保存模板名称tempname名字过长修改
+                    com.netcom.nkestate.fhhouse.salecontract.action.ContractTemplateManageAction.java
+
+2018-11-06 Fix Bug: 开盘单元关联房屋，坐落列表修改
+					\WebRoot\WEB-INF\jsp\fhhouse\project\StartBuildingRelation.jsp
+
+2018-11-03 Fix Bug: 合同确认时修改，操作在同一个事务里
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.SignContractBO.java
+
+####### Release: 发布正式环境 , Release Date(2018-11-02) ####### 
+2018-11-02 Fix Bug: 预售合同附件六打印问题修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+
+####### Release: 发布正式环境 , Release Date(2018-11-01) ####### 
+2018-11-01 Fix Bug: 出售合同条款17，选择项保存后在打开内容没变修改
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-10-30) ####### 
+2018-10-30 Fix Bug: 1、合同签约一房一价判断修改
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					2、抵押信息获取修改
+					com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+
+####### Release: 发布正式环境 , Release Date(2018-10-23) ####### 
+2018-10-23 Fix Bug: 预售合同签约增加资金监管判断
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+
+####### Release: V_18_01_05 ,Release Date(2018-10-19) ####### 
+2018-10-19 Fix Bug: 1、绿网许可证房屋关联页面调整
+					\WEB-INF\jsp\fhhouse\project\StartBuildingEditList.jsp
+					\WEB-INF\jsp\fhhouse\project\StartBuildingRelation.jsp
+					2、出售合同模板条款十二日期字段处理
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+
+2018-10-18 Fix Bug: 开发企业签约人员编辑页面调整
+					com.netcom.nkestate.fhhouse.company.action.CompanyAction.java
+					\WEB-INF\jsp\fhhouse\company\SignerEdit.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-10-16) ####### 
+2018-10-16 Fix Bug: 老合同打印，限购ID未打印出来修改；交接书打印问题修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+
+
+####### Release: V_18_01_04 ,Release Date(2018-10-15) ####### 
+2018-10-15 Fix Bug:  1、合同预售与出售模板下拉框改为字典表显示原先代码注释掉
+                     \WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+                     \WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+                     2、交接书生成pdf出错修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					3、绿网交接书查询功能优化，“房屋地址”显示问题处理
+					com.netcom.nkestate.fhhouse.query.dao.ContractQueryDAO.java
+					4、绿网收件录入功能优化
+					\WEB-INF\jsp\fhhouse\manage\document\DocumentEdit.jsp
+					5、绿网预售许可资质修改功能优化
+					\WEB-INF\jsp\fhhouse\project\PresellEdit.jsp
+					com.netcom.nkestate.fhhouse.project.dao.ProjectDAO.java
+
+####### Release: V_18_01_03 , Release Date(2018-10-12) ####### 
+2018-10-12 Fix Bug: 1、合同撤销页面坐落字段加长长度
+					\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelApplyView.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelFirstAuditView.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelIssueView.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\cancelcontract\CancelSecondAuditView.jsp
+					2、交接书获取大产证号逻辑修改
+					com.netcom.nkestate.fhhouse.salecontract.action.CompanyManageAction.java
+					3、合同基本信息页面，合同撤销人员显示名称修改
+					com.netcom.nkestate.fhhouse.query.action.ContractQueryAction.java
+					4、交接书生成pdf出错修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					5、开发企业签约人编辑关联楼盘查询不检查项目和开盘单元状态
+					com.netcom.nkestate.fhhouse.company.dao.CompanyDAO.java
+
+####### Release: V_18_01_02 , Release Date(2018-10-11) ####### 
+2018-10-11 Fix Bug: 1、老合同打印附件处理修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					2、蓝网交接书查询增加状态列
+					com.netcom.nkestate.fhhouse.salecontract.action.CompanyManageAction.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.CompanyManageDAO.java
+					3、获取大产证号逻辑修改，排除预告产权数据
+					com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+                    4、基准价格管理价格修改页面添加滚动条
+                    \WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceUpdate.jsp
+                    5、合同模板保存附件问题
+                    com.netcom.nkestate.fhhouse.salecontract.action.ContractTemplateManageAction.java
+                    com.netcom.nkestate.fhhouse.salecontract.bo.ContractTemplateManageBO.java
+                    com.netcom.nkestate.fhhouse.salecontract.dao.ContractTemplateManageDAO.java
+                    
+####### Release: V_18_01_01 , Release Date(2018-10-10) ####### 
+2018-10-10 Fix Bug: 1、房屋交接书签约问题处理
+					com.netcom.nkestate.framework.dao.DBSupport.java
+					\WEB-INF\jsp\fhhouse\salecontract\manage\DeliverApplyView.jsp
+					2、蓝网合同签约判断人工可售状态
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+					com.netcom.nkestate.fhhouse.FHConstant.java
+					3、蓝网签约房屋信息，实测面积为0是显示预测面积
+					com.netcom.nkestate.fhhouse.interfaces.dao.RealestateDAO.java
+ 
+####### Release: 发布正式环境 , Release Date(2018-10-09) ####### 
+2018-10-09 Fix Bug: 1、预售合同附件六问题处理
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+					2、预售合同附件四付款方式出错修改
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellAttach2.jsp
+					3、合同确认是付款价格跟合同价格是否一致检查修改，解决小数问题
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					4、预售合同模板资金监管信息可以手动修改
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-09-30) ####### 
+2018-09-30 Fix Bug: 1、预售合同附件六打印修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+
+####### Release: 发布正式环境 , Release Date(2018-09-29) ####### 
+2018-09-29 Fix Bug: 1、合同打印修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					2、交接书提交增加检查
+					com.netcom.nkestate.fhhouse.salecontract.action.CompanyManageAction.java
+					3、基准价格管理修改
+					com.netcom.nkestate.fhhouse.manage.action.PriceManageAction.java
+					com.netcom.nkestate.fhhouse.manage.bo.GuidePriceLogBO.java
+					com.netcom.nkestate.fhhouse.manage.bo.GuidePriceMgBO.java
+					com.netcom.nkestate.fhhouse.manage.dao.GuidePriceLogDAO.java
+					com.netcom.nkestate.fhhouse.manage.vo.JGGLLogVO.java
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceCk.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceCkHouseList.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceCkList.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceHouseList.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceMg.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceMgList.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceUpdate.jsp
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceUpdateCk.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-09-28) ####### 
+2018-09-28 Fix Bug: 1、绿网合同查询分页错误修改
+					com.netcom.nkestate.fhhouse.query.action.ContractQueryAction.java
+					2、合同签约时把坐落4个字段放到合同明细表
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					3、登记申请书卖方代理人信息空着
+					\WEB-INF\jsp\fhhouse\query\sellcontract\ContractApply.jsp
+					4、基准价格管理项目列表查询区县控制修改
+					com.netcom.nkestate.fhhouse.manage.dao.GuidePriceMgDAO.java
+					5、预售合同模板二十条款错误修改
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+					6、预售和出售合同第一条款修正，去掉只读
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractSign.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-09-27  pm) ####### 
+2018-09-27 Fix Bug: 1、交接书打印修改，空白距离缩小
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					2、合同确认错误修改
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					3、合同基本信息打印修改
+					com.netcom.nkestate.fhhouse.query.action.ContractQueryAction.java
+					com.netcom.nkestate.fhhouse.salecontract.vo.ContractDealVO.java
+					\WEB-INF\jsp\fhhouse\query\sellcontract\ContractInfo.jsp
+
+
+####### Release: 发布正式环境 , Release Date(2018-09-27  am) ####### 
+2018-09-27 Fix Bug: 1、合同打印修改
+					com.netcom.nkestate.fhhouse.query.action.ContractPdfAction.java
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					com.netcom.nkestate.framework.dao.DBSupport.java
+					2、合同模板名称长度控制修改
+					com.netcom.nkestate.fhhouse.salecontract.action.ContractTemplateManageAction.java
+					3、价格管理房屋列表分页错误修改
+					com.netcom.nkestate.fhhouse.manage.action.PriceManageAction.java
+					\WEB-INF\jsp\fhhouse\manage\pricemanage\GuidePriceUpdate.jsp
+					4、合同确认出错修改
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+					5、限购保存出错修改
+					com.netcom.nkestate.fhhouse.salecontract.vo.XgBuyerOwnerNameVO.java
+					com.netcom.nkestate.fhhouse.salecontract.action.SignContractAction.java
+
+
+####### Release: 发布正式环境 , Release Date(2018-09-26 am) ####### 
+2018-09-26 Fix Bug: 1、交接书申请时坐落可修改
+					\WEB-INF\jsp\fhhouse\salecontract\manage\DeliverApplyView.jsp
+					2、绿网密码修改错误修改
+					com.netcom.nkestate.system.dao.LoginDAO.java
+					3、登记申请表打印修改
+					com.netcom.nkestate.fhhouse.query.action.ContractQueryAction.java
+					\WEB-INF\jsp\fhhouse\query\sellcontract\ContractApply.jsp
+					4、蓝网交接书查询错误修改
+					com.netcom.nkestate.fhhouse.salecontract.action.CompanyManageAction.java
+					com.netcom.nkestate.fhhouse.salecontract.bo.CompanyManageBO.java
+					com.netcom.nkestate.fhhouse.salecontract.dao.CompanyManageDAO.java
+					5、老合同打印附件一显示错误修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					6、合同模板名称长度控制修改
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+
+####### Release: 发布正式环境 , Release Date(2018-09-25) ####### 
+2018-09-25 Fix Bug: 1、房屋交接书签约时测绘认证机构可修改，地下附属面积不必填
+					\WEB-INF\jsp\fhhouse\salecontract\manage\DeliverApplyView.jsp
+					2、蓝网草签合同和合同查询功能，路、号、幢、单元查询错误修改
+					com.netcom.nkestate.fhhouse.salecontract.dao.SignContractDAO.java
+					3、绿网房屋管理楼幢信息列表页面分页查询出错修改
+					\WEB-INF\jsp\fhhouse\project\house\BuildingQueryList.jsp
+					4、老合同打印附件一显示错误修改
+					com.netcom.nkestate.fhhouse.query.bo.ContractPdfBO.java
+					5、合同条款字段扩长
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateCS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\ContractTemplateYS.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\PresellContractSign.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractEdit.jsp
+					\WEB-INF\jsp\fhhouse\salecontract\signcontract\SellContractSign.jsp
+
+					
+

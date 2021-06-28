@@ -1,0 +1,30 @@
+/* BODY */
+
+FONT_SIZE{
+    FONT-SIZE: 30px;
+    COLOR:#F22FFF;
+}
+
+TABLE{
+	EMPTY-CELLS:SHOW;
+    FONT-SIZE: 10px;
+    FONT-FAMILY:"arial";
+}
+
+TH{
+   BACKGROUND-COLOR:#E6F8E3;
+   COLOR:#003300;
+   FONT-SIZE: 11px;
+   FONT-FAMILY:"arial";
+}
+/* SELECT */
+TEXTAREA {
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+    BORDER-TOP-STYLE: groove;
+    BORDER-RIGHT-STYLE: groove;
+    BORDER-LEFT-STYLE: groove;
+    BORDER-BOTTOM-STYLE: groove
+}
+
+

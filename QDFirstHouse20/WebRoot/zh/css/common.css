@@ -1,0 +1,437 @@
+/* for fangdi by zhouyu 2004-10-21 */
+BODY.backGround{
+
+	background-position:top;
+	background-repeat: no-repeat;
+	}
+
+.red{
+	font-size:12px;
+	line-height:17px ;
+	color:#ff0000;
+}
+	
+.ja09, .ja10, .ja12, .ja14, .ja18, .ja24, .subtitle, .confirm, .white, .red, .lightblue , .blue{
+	font-family: Osaka, 'Simsun', 'ＭＳ Ｐゴシック', sans-serif;
+}	
+
+
+/* ALL_CONTENTS */
+.ALL_CONTENTS{
+	POSITION:RELATIVE;
+	OVERFLOW:AUTO;
+	Z-INDEX:1;
+}
+
+.ALL_CONTENTS2{
+	POSITION:RELATIVE;
+	OVERFLOW:AUTO;
+	Z-INDEX:1;
+	HEIGHT:380;
+	WIDTH:750;
+	left: 25px;
+	top: 0px;
+}
+
+.ALL_CONTENTS3{
+	height:320;
+	width:100%
+}
+
+/* REPORT_BODY */
+.REPORT_BODY {
+	BACKGROUND-COLOR:#FFFFFF;
+	OVERFLOW:AUTO;
+}
+
+/* HEAD_TABLE */
+.HEAD_TABLE{
+	EMPTY-CELLS:SHOW;
+	FONT-SIZE:10px;
+	FONT-FAMILY:"arial";
+}
+
+
+/* DETAIL_TABLE*/
+.DETAIL_TABLE{
+	EMPTY-CELLS:SHOW;
+	FONT-SIZE:10px; 
+	FONT-FAMILY:"arial";
+}
+
+/* STANDARD_LINE */
+TR.STANDARD_LINE {
+	BACKGROUND-COLOR:#CECFFF;
+}
+
+/* EMPHASIZED_LINE */
+TR.EMPHASIZED_LINE {
+	BACKGROUND-COLOR:#DEC3F7;
+}
+
+/* WORD_BREAK_ALL */
+TD.WORD_BREAK_ALL {
+	WORD-BREAK:BREAK-ALL;
+	font-size: 12px;
+}
+
+/* TITLE */
+TD.TITLE {
+	COLOR: #393084;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+
+/* TITLE_LOGIN */
+TD.TITLE_LOGIN {
+	COLOR: #393084;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+
+/* LOGIN_TITLE */
+TD.LOGIN_TITLE {
+	COLOR: #0033CC;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+
+/* HELP	*/
+TD.HELP{
+	FONT-SIZE:10px;
+	FONT-FAMILY:"arial"; 
+	TEXT-DECORATION: none
+}
+
+/* MESSAGE */
+TD.MESSAGE{
+	FONT-FAMILY: "楷体_GB2312";
+	FONT-SIZE: 18PX;
+	FONT-WEIGHT: BOLD;
+	COLOR: #F00028;
+	TEXT-DECORATION: none
+}
+
+/* MESSAGE_WARNING */
+TD.MESSAGE_WARNING{
+	FONT-FAMILY: "楷体_GB2312";
+	FONT-SIZE: 18PX;
+	FONT-WEIGHT: BOLD;
+	COLOR: #F00028;
+	TEXT-DECORATION: none
+
+}
+
+/* MESSAGE_ERROR */
+TD.MESSAGE_ERROR{
+	FONT-FAMILY: "楷体_GB2312";
+	FONT-SIZE: 18PX;
+	FONT-WEIGHT: BOLD;
+	COLOR: #F00028;
+	TEXT-DECORATION: none
+
+}
+
+/* MESSAGE_SPECIAL */
+TD.MESSAGE_SPECIAL{
+	FONT-FAMILY: "楷体_GB2312";
+	FONT-SIZE: 18PX;
+	FONT-WEIGHT: BOLD;
+	COLOR: #F00028;
+	TEXT-DECORATION: none
+}
+
+/* LABEL */
+TD.LABEL {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: right;
+}
+
+TD.MAIN_LABEL {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: center;
+}
+
+/* COMMENT */
+.COMMENT {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: left;
+}
+
+/* NAME	*/
+TD.NAME	{
+	COLOR: #000000;
+	FONT-FAMILY: "arial";
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: left;
+}
+
+/* SELECT */
+SELECT.SELECT {
+	COLOR: #000000;
+	 
+	FONT-SIZE: 12px;  
+	text-align: left;
+}
+
+/* TEXT_CHA */
+INPUT.TEXT_CHA {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	TEXT-DECORATION: none
+	text-align: left;
+    BORDER-TOP-STYLE: groove;
+    BORDER-RIGHT-STYLE: groove;
+    BORDER-LEFT-STYLE: groove;
+    BORDER-BOTTOM-STYLE: groove
+}
+
+/* TEXT_NUM */
+INPUT.TEXT_NUM {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	text-align: right;
+    BORDER-TOP-STYLE: groove;
+    BORDER-RIGHT-STYLE: groove;
+    BORDER-LEFT-STYLE: groove;
+    BORDER-BOTTOM-STYLE: groove
+}
+
+/* TEXT_DTL_CHA	*/
+INPUT.TEXT_DTL_CHA {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	HEIGHT:20; 
+	text-align: left;
+    BORDER-TOP-STYLE: groove;
+    BORDER-RIGHT-STYLE: groove;
+    BORDER-LEFT-STYLE: groove;
+    BORDER-BOTTOM-STYLE: groove
+}
+
+/* TEXT_DTL_NUM	*/
+INPUT.TEXT_DTL_NUM {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	HEIGHT:18;
+	text-align: right;
+    BORDER-TOP-STYLE: groove;
+    BORDER-RIGHT-STYLE: groove;
+    BORDER-LEFT-STYLE: groove;
+    BORDER-BOTTOM-STYLE: groove
+}
+
+/* BUTTON */
+INPUT.BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none;
+	HEIGHT:20;
+}
+
+/* MINI_BUTTON */
+INPUT.MINI_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none;
+	HEIGHT:18;
+	WIDTH:18;
+}
+
+/* MENU_BUTTON */
+INPUT.MENU_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 20px; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none;
+	HEIGHT:40;
+	WIDTH:300;
+}
+
+/* MAIN_MENU_BUTTON */
+INPUT.MAIN_MENU_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 20px; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none;
+	HEIGHT:40;
+	WIDTH:300;
+}
+
+/* MENU_TITLE */
+TD.MENU_TITLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TITLE */
+TD.PRINT_TITLE {
+	COLOR: #000000;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+/* PRINT_LABEL_UC */
+TD.PRINT_LABEL_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_INFO_UC */
+TD.PRINT_INFO_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_TABLETITLE_UC */
+TD.PRINT_TABLETITLE_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_TABLE_UC */
+TD.PRINT_TABLE_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* COVER_LABEL */
+TD.COVER_LABEL {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* COVER_INFO */
+TD.COVER_INFO {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_LABEL */
+TD.PRINT_LABEL {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_INFO */
+TD.PRINT_INFO {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_HEAD */
+TD.PRINT_HEAD {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TABLETITLE */
+TD.PRINT_TABLETITLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TABLE */
+TD.PRINT_TABLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_FOOTER	*/
+TD.PRINT_FOOTER	{
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+@media print {
+	.ipt {display:none}
+	.bk {page-break-before: always;}
+}
+
+/*已付定金（粉红）*/
+TD.CONTRACT_STATUS_8{
+	BACKGROUND-COLOR: #CC99CC;
+}
+
+/*已签（黄）*/
+TD.CONTRACT_STATUS_2{
+	BACKGROUND-COLOR: #FFFF00;
+}
+
+/*已登记（红）*/
+TD.CONTRACT_STATUS_3{
+	BACKGROUND-COLOR: #CC3300;
+}
+
+/*可售（绿）*/
+TD.CONTRACT_STATUS_4{
+	BACKGROUND-COLOR: #00FF99;
+}
+
+/*未纳入网上销售（白）*/
+TD.CONTRACT_STATUS_9{
+	BACKGROUND-COLOR: #FFFFFF;
+}
+
+/*补空房*/
+TD.CONTRACT_STATUS_{
+	BACKGROUND-COLOR: #E2EEFC;
+}
+/*已被其它开盘单元添加*/
+TD.CONTRACT_STATUS_7{
+	BACKGROUND-COLOR: #999999;
+}
+/*未纳入本开盘单元销售的房屋*/
+TD.CONTRACT_STATUS_0{
+	BACKGROUND-COLOR: #E2EEFC;
+}
+/*人工分配房屋*/
+TD.CONTRACT_STATUS_10{
+	BACKGROUND-COLOR: #0099FF;
+}

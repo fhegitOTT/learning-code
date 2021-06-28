@@ -1,0 +1,308 @@
+/* ALL_CONTENTS */
+.ALL_CONTENTS{
+	POSITION:RELATIVE;
+	OVERFLOW:AUTO;
+	Z-INDEX:1;
+}
+
+/* REPORT_BODY */
+.REPORT_BODY {
+	BACKGROUND-COLOR:#FFFFFF;
+	OVERFLOW:AUTO;
+}
+
+/* HEAD_TABLE */
+.HEAD_TABLE{
+	EMPTY-CELLS:SHOW;
+	FONT-SIZE:10px;
+	FONT-FAMILY:"arial";
+}
+
+/* DETAIL_TABLE*/
+.DETAIL_TABLE{
+	EMPTY-CELLS:SHOW;
+	FONT-SIZE:10px; 
+	FONT-FAMILY:"arial";
+}
+
+/* STANDARD_LINE */
+TR.STANDARD_LINE {
+	BACKGROUND-COLOR:#CECFFF;
+}
+
+/* EMPHASIZED_LINE */
+TR.EMPHASIZED_LINE {
+	BACKGROUND-COLOR:#DEC3F7;
+}
+
+/* TITLE */
+TD.TITLE {
+	COLOR: #393084;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+
+/* TITLE_LOGIN */
+TD.TITLE_LOGIN {
+	COLOR: #393084;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+
+/* LOGIN_TITLE */
+TD.LOGIN_TITLE {
+	COLOR: #0033CC;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+
+/* HELP	*/
+TD.HELP{
+	FONT-SIZE:10px;
+	FONT-FAMILY:"arial"; 
+	TEXT-DECORATION: none
+}
+
+/* MESSAGE */
+TD.MESSAGE{
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none
+}
+
+/* LABEL */
+TD.LABEL {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: right;
+}
+
+TD.MAIN_LABEL {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: center;
+}
+
+/* COMMENT */
+.COMMENT {
+	COLOR: #393084;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: left;
+}
+
+/* NAME	*/
+TD.NAME	{
+	COLOR: #000000;
+	FONT-FAMILY: "arial";
+	FONT-SIZE: 10px;
+	TEXT-DECORATION: none;
+	text-align: left;
+}
+
+/* SELECT */
+SELECT.SELECT {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 13px;  
+	text-align: left;
+}
+
+/* TEXT_CHA */
+INPUT.TEXT_CHA {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	TEXT-DECORATION: none
+	text-align: left;
+}
+
+/* TEXT_NUM */
+INPUT.TEXT_NUM {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	text-align: right;
+}
+
+/* TEXT_DTL_CHA	*/
+INPUT.TEXT_DTL_CHA {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	HEIGHT:20; 
+	text-align: left;
+}
+
+/* TEXT_DTL_NUM	*/
+INPUT.TEXT_DTL_NUM {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px;  
+	HEIGHT:18;
+	text-align: right;
+}
+
+/* BUTTON */
+INPUT.BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 13px; 
+	TEXT-DECORATION: none;
+	HEIGHT:20;
+	WIDTH:70;
+}
+
+/* MINI_BUTTON */
+INPUT.MINI_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 12px; 
+	TEXT-DECORATION: none;
+}
+
+/* MENU_BUTTON */
+INPUT.MENU_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 20px; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none;
+	HEIGHT:40;
+	WIDTH:300;
+}
+
+/* MAIN_MENU_BUTTON */
+INPUT.MAIN_MENU_BUTTON {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 20px; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none;
+	HEIGHT:40;
+	WIDTH:300;
+}
+
+/* MENU_TITLE */
+TD.MENU_TITLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TITLE */
+TD.PRINT_TITLE {
+	COLOR: #000000;
+	FONT-SIZE: 20px; 
+	FONT-FAMILY: "arial"; 
+	FONT-WEIGHT: bold; 
+	TEXT-DECORATION: none
+}
+/* PRINT_LABEL_UC */
+TD.PRINT_LABEL_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_INFO_UC */
+TD.PRINT_INFO_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_TABLETITLE_UC */
+TD.PRINT_TABLETITLE_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* PRINT_TABLE_UC */
+TD.PRINT_TABLE_UC {
+	COLOR: #000000;
+	FONT-SIZE: 10px; 
+	FONT-FAMILY: "arial"; 
+	TEXT-DECORATION: none
+}
+/* COVER_LABEL */
+TD.COVER_LABEL {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* COVER_INFO */
+TD.COVER_INFO {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_LABEL */
+TD.PRINT_LABEL {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_INFO */
+TD.PRINT_INFO {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_HEAD */
+TD.PRINT_HEAD {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TABLETITLE */
+TD.PRINT_TABLETITLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_TABLE */
+TD.PRINT_TABLE {
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+/* PRINT_FOOTER	*/
+TD.PRINT_FOOTER	{
+	COLOR: #000000;
+	FONT-FAMILY: "arial"; 
+	FONT-SIZE: 10px; 
+	TEXT-DECORATION: none
+}
+
+@media print {
+	.ipt {display:none}
+	.bk {page-break-before: always;}
+}

@@ -1,0 +1,33 @@
+.leftMenu{
+	border:1px solid #95B8E7;
+	width:191px
+	}
+	
+.leftMenu .title_div{
+	background:#E0ECFF;
+	border-bottom:1px solid #DDDDDD; 
+	height:21px;
+	
+	}
+	
+.leftMenu .title{
+	font-size:12px;
+	font-weight:700;
+	}
+	
+.leftMenu .propertyname{
+	border-right:1px dotted #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+	font-size:12px;
+	width:30%;
+	}
+.leftMenu .propertyvalue{
+	border-right:1px dotted #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+	font-size:12px;
+	width:70%;
+	}
+
+.selfinput{
+	border:1px solid #95B8E7;
+	}

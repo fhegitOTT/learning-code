@@ -1,0 +1,18 @@
+body{cursor: url(../cursor/normal.cur);}
+a{cursor: url(../cursor/hand.cur);}
+table,td,th{
+	margin:0;
+	padding:2px;
+	font-size: 12px;
+	border: 1px solid #D0EBF9;
+}
+input{
+	font-size: 12px;
+}
+.title{
+	background-image:url(../image/title.jpg);
+	background-repeat: repeat-x;
+	font-weight: bold;
+	text-align: center;
+	height:25px;
+}

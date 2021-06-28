@@ -1,0 +1,1300 @@
+系统说明：
+jdk1.6
+weblogic 11
+编码：UTF8
+
+--2018.9.25 合同条款字段扩大
+--预售合同明细表
+alter table firsthand.contract_detail_ys modify ( f0714 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f0724 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f0808 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1010 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1208 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1304 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1305 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1403 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1506 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1902 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f2005 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f9114 varchar2(4000));
+alter table firsthand.contract_detail_ys modify ( f1103 varchar2(500));
+alter table firsthand.contract_detail_ys modify ( f1603 varchar2(500));
+alter table firsthand.contract_detail_ys modify ( f1606 varchar2(500));
+alter table firsthand.contract_detail_ys modify ( f1618 varchar2(500));
+alter table firsthand.contract_detail_ys modify ( f1701 varchar2(500));
+alter table firsthand.contract_detail_ys modify ( f2201 varchar2(500));
+
+--预售合同模板明细表
+alter table firsthand.contracttemplate_ys modify ( f0714 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f0724 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f0808 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1010 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1208 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1304 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1305 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1403 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1506 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1902 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f2005 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f9114 varchar2(4000));
+alter table firsthand.contracttemplate_ys modify ( f1103 varchar2(500));
+alter table firsthand.contracttemplate_ys modify ( f1603 varchar2(500));
+alter table firsthand.contracttemplate_ys modify ( f1606 varchar2(500));
+alter table firsthand.contracttemplate_ys modify ( f1618 varchar2(500));
+alter table firsthand.contracttemplate_ys modify ( f1701 varchar2(500));
+alter table firsthand.contracttemplate_ys modify ( f2201 varchar2(500));
+
+--出售合同明细表
+alter table firsthand.contract_detail_cs modify ( f0814  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f0824  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f0908  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f1110  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f1308  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f1404  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f1705  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f9111  varchar2(4000));
+alter table firsthand.contract_detail_cs modify ( f9112  varchar2(4000));
+
+--出售合同模板明细表
+alter table firsthand.contracttemplate_cs modify ( f0814  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f0824  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f0908  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f1110  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f1308  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f1404  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f1705  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f9111  varchar2(4000));
+alter table firsthand.contracttemplate_cs modify ( f9112  varchar2(4000));
+
+Release: 发布正式环境 , Release Date(2018-09-25)
+
+--2018.9.28 ph  合同主表路弄号字段刷新
+update contractdeal a
+   set (a.road, a.alley, a.lane_name, a.sub_lane, a.buildingnumber) = 
+	(select b1.roadname,
+              b1.lanename||b1.sublane,
+              b1.lanename,
+              b1.sublane,
+              b1.streetnumber
+         from ch_location b1,
+              (select b3.houseid,
+                      max(locationid) as locationid
+                 from cl_flat_location b3
+                group by b3.houseid) b2
+        where b1.locationid =  b2.locationid
+        and b2.houseid = a.house_id)
+ where a.road is null
+   and a.contract_id >= ???????????
+   and exists (select 1
+          from cl_flat_location c1, ch_location c2
+         where c1.locationid = c1.locationid
+           and c1.houseid = a.house_id
+        );
+commit;
+
+Release: 发布正式环境 , Release Date(2018-09-28)
+
+/***********住保接口查询日志表*****************/
+CREATE TABLE LOG_ZBQUERY_T
+(
+  LOGID      NUMBER(20)                         PRIMARY KEY,
+  NAME       VARCHAR2(100 BYTE),
+  CARDNO     VARCHAR2(100 BYTE),
+  REQUEST    VARCHAR2(200 BYTE),
+  RESPONSE   VARCHAR2(2000 BYTE),
+  QUERYDATE  DATE  
+);
+
+/*************住保接口查询日志序列********************/
+CREATE SEQUENCE SEQ_LOG_ZBQUERY_T
+  START WITH 1
+  MAXVALUE 999999999999999999999999999
+  MINVALUE 1
+  NOCYCLE
+  NOCACHE
+  NOORDER;
+  
+/*******************住保接口区市对应字典表****************/
+  CREATE TABLE CT_ZBDISTRICT_T
+(
+  ID    NUMBER(2) PRIMARY KEY,
+  CODE  VARCHAR2(10 BYTE),
+  NAME  VARCHAR2(20 BYTE)
+);
+
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (2, 'SN', '市南区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (3, 'SB', '市北区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (5, 'SF', '四方区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (21, 'GX', '高新区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (13, 'LC', '李沧区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (14, 'CY', '城阳区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (12, 'LS', '崂山区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (11, 'HD', '黄岛区');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (84, 'JN', '胶南市');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (81, 'JZ', '胶州市');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (85, 'LX', '莱西市');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (82, 'JM', '即墨市');
+Insert into CT_ZBDISTRICT_T
+   (ID, CODE, NAME)
+ Values
+   (83, 'PD', '平度市');
+
+Release: 发布正式环境 , Release Date(2018-12-12)
+
+
+CREATE TABLE FIRSTHAND.HOUSE_SALE_LOG_T
+(
+  LOGID          NUMBER(15)                     NOT NULL,
+  TRANSACTIONID  NUMBER(15)                     NOT NULL,
+  HOUSEID        NUMBER(18)                     NOT NULL,
+  DISTRICTID     NUMBER(2)                      NOT NULL,
+  SALEFLAG       NUMBER(2),
+  MEMO           VARCHAR2(100 BYTE),
+  MODIFYDATE     DATE,
+  MODIFYUSER     NUMBER(10)
+);
+
+GRANT SELECT ON FIRSTHAND.HOUSE_SALE_LOG_T TO NKOUT_QUERY;
+
+ALTER TABLE FIRSTHAND.HOUSE_SALE_LOG_T ADD (
+  CONSTRAINT PK_HOUSE_SALE_LOG
+ PRIMARY KEY
+ (LOGID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+CREATE SEQUENCE FIRSTHAND.SEQ_HOUSESALELOG
+  START WITH 10000001
+  MAXVALUE 999999999999999999999999999
+  MINVALUE 1
+  NOCYCLE
+  NOCACHE
+  NOORDER;
+ GRANT SELECT ON FIRSTHAND.SEQ_HOUSESALELOG TO NKOUT_QUERY; 
+
+CREATE TABLE FIRSTHAND.APPLY_T
+(
+  TRANSACTIONID         NUMBER(15)              NOT NULL,
+  DISTRICTID            NUMBER(2)               NOT NULL,
+  STATE                 NUMBER(2)               NOT NULL,
+  ISCENTER              NUMBER(1),
+  LOCATION              VARCHAR2(200 BYTE),
+  APPLICANT             VARCHAR2(200 BYTE),
+  APPLICANTCARDTYPE     NUMBER(2),
+  APPLICANTCARDNO       VARCHAR2(50 BYTE),
+  APPLICANTNATIONALITY  NUMBER(2),
+  APPLICANTNATIVE       NUMBER(2),
+  APPLICANTADDR         VARCHAR2(200 BYTE),
+  APPLICANTTEL          VARCHAR2(50 BYTE),
+  APPLICANTZIP          VARCHAR2(20 BYTE),
+  AGENTNAME             VARCHAR2(100 BYTE),
+  AGENTCARDTYPE         NUMBER(2),
+  AGENTCARDNO           VARCHAR2(50 BYTE),
+  AGENTADDRESS          VARCHAR2(200 BYTE),
+  AGENTTEL              VARCHAR2(50 BYTE),
+  AGENTZIP              VARCHAR2(20 BYTE),
+  ACCEPTDATE            DATE,
+  ACCEPTUSER            NUMBER(10),
+  AUDITDATE             DATE,
+  AUDITUSER             NUMBER(10),
+  AUDITOPINION          VARCHAR2(200 BYTE),
+  PASSDATE              DATE,
+  PASSUSER              NUMBER(10),
+  PASSOPINION           VARCHAR2(200 BYTE),
+  PASSRESULT            NUMBER(2),
+  MODIFYDATE            DATE,
+  MODIFYUSER            NUMBER(10),
+  MEMO                  VARCHAR2(400 BYTE),
+  IMAGEPATH             VARCHAR2(200 BYTE),
+  PRINTDATE             DATE,
+  PRINTUSER             NUMBER(10),
+  ARCHIVEDATE           DATE,
+  ARCHIVEUSER           NUMBER(10)
+);
+
+
+ALTER TABLE FIRSTHAND.APPLY_T ADD (
+  CONSTRAINT PK_APPLY_T
+ PRIMARY KEY
+ (TRANSACTIONID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+GRANT SELECT ON FIRSTHAND.APPLY_T TO NKOUT_QUERY;
+
+CREATE SEQUENCE FIRSTHAND.SEQ_APPLY_T
+  START WITH 1
+  MAXVALUE 999
+  MINVALUE 1
+  CYCLE
+  NOCACHE
+  NOORDER;
+GRANT SELECT ON FIRSTHAND.SEQ_APPLY_T TO NKOUT_QUERY;
+
+CREATE TABLE FIRSTHAND.R_HOUSE_PERMIT_T
+(
+  PERMITID       NUMBER(15)                     NOT NULL,
+  HOUSEID        NUMBER(18)                     NOT NULL,
+  DISTRICTID     NUMBER(2)                      NOT NULL,
+  TRANSACTIONID  NUMBER(15)                     NOT NULL,
+  ISFINISH       NUMBER(1)                      NOT NULL,
+  SALEFLAG       NUMBER(2),
+  MODIFYDATE     DATE,
+  MODIFYUSER     NUMBER(10)
+);
+
+
+CREATE INDEX FIRSTHAND.IDX_R_HOUSE_PERMIT ON FIRSTHAND.R_HOUSE_PERMIT_T
+(TRANSACTIONID)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_R_HOUSE_PERMIT ON FIRSTHAND.R_HOUSE_PERMIT_T
+(PERMITID, HOUSEID)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.R_HOUSE_PERMIT_T ADD (
+  CONSTRAINT PK_R_HOUSE_PERMIT
+ PRIMARY KEY
+ (PERMITID, HOUSEID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+GRANT SELECT ON FIRSTHAND.R_HOUSE_PERMIT_T TO NKOUT_QUERY;
+
+ 
+CREATE TABLE FIRSTHAND.PERMIT_T
+(
+  PERMITID       NUMBER(15)                     NOT NULL,
+  TRANSACTIONID  NUMBER(15)                     NOT NULL,
+  DISTRICTID     NUMBER(2)                      NOT NULL,
+  PERMITNO       VARCHAR2(50 BYTE),
+  PERMITTYPE     NUMBER(2),
+  ADATE          DATE,
+  AADDRESS       VARCHAR2(200 BYTE),
+  ASALE          NUMBER(2),
+  AAGENT         VARCHAR2(200 BYTE),
+  ALINKER        VARCHAR2(100 BYTE),
+  BADDRESS       VARCHAR2(200 BYTE),
+  BSALE          NUMBER(2),
+  BAGENT         VARCHAR2(200 BYTE),
+  BLINKER        VARCHAR2(100 BYTE),
+  PAREA          NUMBER(12,2),
+  PSETS          NUMBER(6),
+  PDATE          DATE,
+  RAREA          NUMBER(12,2),
+  RSETS          NUMBER(6),
+  RDATE          DATE,
+  CNO            VARCHAR2(50 BYTE),
+  CSETS          NUMBER(4),
+  DTYPE          NUMBER(3),
+  ETYPE          NUMBER(3),
+  FTYPE          NUMBER(3),
+  HNO            VARCHAR2(2000 BYTE),
+  HFLOOR         NUMBER(4,1),
+  HSETS          NUMBER(12,2),
+  LBUILDAREA     NUMBER(12,2),
+  INROOMAREA     NUMBER(12,2),
+  PSALEUNIT      NUMBER(15,2),
+  CURRENCY       NUMBER(3),
+  PSALE1         NUMBER(16,6),
+  PSET1          NUMBER(12,2),
+  PSALE2         NUMBER(12,2),
+  PSET2          NUMBER(12,2),
+  STATUS         NUMBER(1),
+  REMARK         VARCHAR2(2000 BYTE),
+  MOVINGPACKAGE  VARCHAR2(3000 BYTE),
+  BARGAINCODE    VARCHAR2(200 BYTE),
+  LANDUSAGE      VARCHAR2(200 BYTE),
+  LOCATION       VARCHAR2(200 BYTE),
+  PASSDATE       DATE,
+  PTFLAG         NUMBER(1),
+  PROJECTNAME    VARCHAR2(100 BYTE),
+  COMPANYNAME    VARCHAR2(400 BYTE),
+  MODIFYDATE     DATE,
+  MODIFYUSER     NUMBER(10)
+);
+  
+CREATE INDEX FIRSTHAND.PERMIT_T_TRANSACTIONID ON FIRSTHAND.PERMIT_T
+(TRANSACTIONID)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_PERMIT_T ON FIRSTHAND.PERMIT_T
+(PERMITID)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.PERMIT_T ADD (
+  CONSTRAINT PK_PERMIT_T
+ PRIMARY KEY
+ (PERMITID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+GRANT SELECT ON FIRSTHAND.PERMIT_T TO NKOUT_QUERY;
+
+CREATE SEQUENCE FIRSTHAND.SEQ_PERMITID
+  START WITH 510000000001
+  MAXVALUE 9999999999999999999999999999999
+  MINVALUE 510000000001
+  NOCYCLE
+  NOCACHE
+  NOORDER;
+  GRANT SELECT ON FIRSTHAND.SEQ_PERMITID TO NKOUT_QUERY;
+  
+
+CREATE TABLE FIRSTHAND.APPLY_FILE_T
+(
+  FILEID         NUMBER(20),
+  TRANSACTIONID  NUMBER(15)                     NOT NULL,
+  DISTRICTID     NUMBER(2),
+  FILENAME       VARCHAR2(200 BYTE),
+  FILECOUNT      NUMBER(4),
+  FILECODE       NUMBER(6),
+  FILEKIND       NUMBER(2),
+  FILETYPE       NUMBER(2),
+  FILEFLAG       NUMBER(1),
+  TYPEBID        NUMBER(6),
+  RECEIVEDFLAG   NUMBER(1),
+  REMARK         VARCHAR2(2000 BYTE)
+);
+
+
+ALTER TABLE FIRSTHAND.APPLY_FILE_T ADD (
+  PRIMARY KEY
+ (FILEID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+  
+   GRANT SELECT ON FIRSTHAND.APPLY_FILE_T TO NKOUT_QUERY; 
+   
+ CREATE SEQUENCE FIRSTHAND.SEQ_APPLY_FILE_ID
+  START WITH 100000000001
+  MAXVALUE 9999999999999999999999999999
+  MINVALUE 100000000001
+  NOCYCLE
+  NOCACHE
+  NOORDER;  
+  
+   GRANT SELECT ON FIRSTHAND.SEQ_APPLY_FILE_ID TO NKOUT_QUERY; 
+  
+
+CREATE TABLE FIRSTHAND.IMAGE_FILE_T
+(
+  IMAGEID        NUMBER(20),
+  FILEID         NUMBER(20)                     NOT NULL,
+  TRANSACTIONID  NUMBER(15)                     NOT NULL,
+  DISTRICTID     NUMBER(2)                      NOT NULL,
+  FILENAME       VARCHAR2(200 BYTE),
+  FILENUM        NUMBER(6),
+  FILECODE       VARCHAR2(20 BYTE),
+  FILETYPE       VARCHAR2(20 BYTE),
+  FILESIZE       NUMBER(12),
+  DISKFILENAME   VARCHAR2(200 BYTE),
+  USERID         NUMBER(10),
+  UPLOADTIME     DATE,
+  SOURCETYPE     NUMBER(2),
+  TOTALPAGE      NUMBER(6),
+  CONSEQNUM      NUMBER(6)
+);
+
+
+ALTER TABLE FIRSTHAND.IMAGE_FILE_T ADD (
+  PRIMARY KEY
+ (IMAGEID)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+   
+   GRANT SELECT ON FIRSTHAND.IMAGE_FILE_T TO NKOUT_QUERY;  
+  
+  CREATE SEQUENCE FIRSTHAND.SEQ_IMAGEFILE_ID
+  START WITH 100000000001
+  MAXVALUE 9999999999999999999999999999
+  MINVALUE 100000000001
+  NOCYCLE
+  CACHE 20
+  NOORDER;
+  
+   GRANT SELECT ON FIRSTHAND.SEQ_IMAGEFILE_ID TO NKOUT_QUERY;  
+
+
+CREATE TABLE FIRSTHAND.CT_FILE_TYPE
+(
+  CODE          NUMBER(6),
+  NAME          VARCHAR2(400 BYTE),
+  STATUS        NUMBER(2),
+  STANDARDCODE  VARCHAR2(30 BYTE)
+)
+TABLESPACE FIRSTHAND
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+ALTER TABLE FIRSTHAND.CT_FILE_TYPE ADD (
+  PRIMARY KEY
+ (CODE)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+   GRANT SELECT ON FIRSTHAND.CT_FILE_TYPE TO NKOUT_QUERY;  
+
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (1, '原件正本', 1);
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (2, '正本复印件', 1);
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (3, '原件副本', 1);
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (4, '副本复印件', 1);
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (5, '手稿', 0);
+Insert into FIRSTHAND.CT_FILE_TYPE
+   (CODE, NAME, STATUS)
+ Values
+   (6, '其他', 0);
+COMMIT;
+
+
+
+CREATE TABLE FIRSTHAND.CT_BUILDING_MATER
+(
+  CODE    NUMBER(6)                             NOT NULL,
+  NAME    VARCHAR2(50 BYTE),
+  STATUS  NUMBER(1)
+)
+TABLESPACE FIRSTHAND
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_CT_BUILDING_MATER ON FIRSTHAND.CT_BUILDING_MATER
+(CODE)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.CT_BUILDING_MATER ADD (
+  CONSTRAINT PK_CT_BUILDING_MATER
+ PRIMARY KEY
+ (CODE)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+   GRANT SELECT ON FIRSTHAND.CT_BUILDING_MATER TO NKOUT_QUERY;  
+
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (1, '钢', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (2, '钢及钢混', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (3, '钢混', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (6, '砖木', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (9, '其他', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (7, '混合', 1);
+Insert into CT_BUILDING_MATER
+   (CODE, NAME, STATUS)
+ Values
+   (8, '框架', 0);
+COMMIT;
+
+
+CREATE TABLE FIRSTHAND.CT_CURRENCY_TYPE
+(
+  CODE    NUMBER(6)                             NOT NULL,
+  NAME    VARCHAR2(50 BYTE),
+  STATUS  NUMBER(1),
+  RATE    NUMBER(20,6)
+)
+TABLESPACE FIRSTHAND
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_CT_CURRENCY_TYPE ON FIRSTHAND.CT_CURRENCY_TYPE
+(CODE)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.CT_CURRENCY_TYPE ADD (
+  CONSTRAINT PK_CT_CURRENCY_TYPE
+ PRIMARY KEY
+ (CODE)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+   GRANT SELECT ON FIRSTHAND.CT_CURRENCY_TYPE TO NKOUT_QUERY;  
+
+SET DEFINE OFF;
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (1, '元', 1, 1);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (2, '美元', 1, 6.6043);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (3, '港元', 1, 0.8454);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (4, '日元', 1, 0.05889);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (5, '新币', 1, 4.9018);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (6, '新台币', 1, 0.2189);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (7, '马克', 1, 3.8452);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (8, '英镑', 1, 8.9607);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (9, '法郎', 1, 0.1801);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (10, '澳元', 1, 5.2583);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (11, '泰铢', 1, 0.1996);
+Insert into CT_CURRENCY_TYPE
+   (CODE, NAME, STATUS, RATE)
+ Values
+   (12, '欧元', 1, 7.875);
+COMMIT;
+
+
+CREATE TABLE FIRSTHAND.CT_ETYPE
+(
+  CODE    NUMBER(6)                             NOT NULL,
+  NAME    VARCHAR2(50 BYTE),
+  STATUS  NUMBER(1)
+)
+TABLESPACE FIRSTHAND
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_CT_ETYPE ON FIRSTHAND.CT_ETYPE
+(CODE)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.CT_ETYPE ADD (
+  CONSTRAINT PK_CT_ETYPE
+ PRIMARY KEY
+ (CODE)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+   
+    GRANT SELECT ON FIRSTHAND.CT_ETYPE TO NKOUT_QUERY;  
+
+SET DEFINE OFF;
+Insert into CT_ETYPE
+   (CODE, NAME, STATUS)
+ Values
+   (1, '平房', 1);
+Insert into CT_ETYPE
+   (CODE, NAME, STATUS)
+ Values
+   (2, '多层', 1);
+Insert into CT_ETYPE
+   (CODE, NAME, STATUS)
+ Values
+   (3, '高层', 1);
+Insert into CT_ETYPE
+   (CODE, NAME, STATUS)
+ Values
+   (4, '小高层', 1);
+COMMIT;
+
+
+
+CREATE TABLE FIRSTHAND.CT_HTYPE
+(
+  CODE    NUMBER(6),
+  NAME    VARCHAR2(50 BYTE),
+  STATUS  NUMBER(1)
+)
+TABLESPACE FIRSTHAND
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX FIRSTHAND.PK_CT_HTYPE ON FIRSTHAND.CT_HTYPE
+(CODE)
+LOGGING
+TABLESPACE FIRSTHAND
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE FIRSTHAND.CT_HTYPE ADD (
+  CONSTRAINT PK_CT_HTYPE
+ PRIMARY KEY
+ (CODE)
+    USING INDEX 
+    TABLESPACE FIRSTHAND
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+
+
+   GRANT SELECT ON FIRSTHAND.CT_HTYPE TO NKOUT_QUERY;  
+   
+   SET DEFINE OFF;
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (1, '花园别墅', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (2, '多层住宅', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (3, '综合楼(住办)', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (4, '综合楼(商住)', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (5, '综合楼(商办)', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (6, '综合楼(商住办)', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (7, '厂房', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (8, '仓储', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (9, '其他', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (10, '高层住宅', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (11, '办公楼', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (12, '商业楼', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (99, '不详', 1);
+Insert into CT_HTYPE
+   (CODE, NAME, STATUS)
+ Values
+   (0, '公寓', 1);
+COMMIT;
+Release: 发布正式环境 , Release Date(2019-03-24)
+
+
+CREATE TABLE FIRSTHAND.LOG_HOUSE_SELL_T
+(
+  LOGID           NUMBER(15) primary key,
+  HOUSEID         NUMBER(18),
+  OPERATORUSERID  NUMBER(12),
+  OPERATEDATE     DATE,
+  OPERATETYPE     NUMBER(2)
+);
+
+GRANT SELECT ON FIRSTHAND.LOG_HOUSE_SELL_T TO NKOUT_QUERY;
+
+CREATE SEQUENCE FIRSTHAND.SEQ_HOUSE_SELL_LOG_ID
+  START WITH 13
+  MAXVALUE 999999999999999999999999999
+  MINVALUE 1
+  NOCYCLE
+  NOCACHE
+  NOORDER;
+
+GRANT SELECT ON FIRSTHAND.SEQ_HOUSE_SELL_LOG_ID TO NKOUT_QUERY;
+Release: 发布正式环境 , Release Date(2019-05-17)
+
+
+---青岛无纸化sql  2019-12-29
+CREATE SEQUENCE  FIRSTHAND.SEQ_CONTRACT_SIGN_PDF_LOG  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 81 NOCACHE  NOORDER  NOCYCLE;
+
+alter table FIRSTHAND.ENTERPRISEQUALIFY add (
+	COMP_SEALID VARCHAR2(50), 
+	DELEGATE_SEALID VARCHAR2(50), 
+	COMP_SEALPWD VARCHAR2(10), 
+	DELEGATE_SEALPWD VARCHAR2(10)
+);
+COMMENT ON COLUMN FIRSTHAND.ENTERPRISEQUALIFY.COMP_SEALID IS '企业章ID';
+COMMENT ON COLUMN FIRSTHAND.ENTERPRISEQUALIFY.DELEGATE_SEALID IS '企业法人章ID ';
+COMMENT ON COLUMN FIRSTHAND.ENTERPRISEQUALIFY.COMP_SEALPWD IS '企业章ID密码 ';
+COMMENT ON COLUMN FIRSTHAND.ENTERPRISEQUALIFY.DELEGATE_SEALPWD IS '企业法人章ID密码 ';
+
+
+alter table FIRSTHAND.SIGNER add (
+	CANSEAL NUMBER(1,0), 
+	KEYID VARCHAR2(100)
+);
+COMMENT ON COLUMN FIRSTHAND.SIGNER.CANSEAL IS '1,允许盖章，0，不允许盖章';
+COMMENT ON COLUMN FIRSTHAND.SIGNER.KEYID IS 'keyID ';
+
+CREATE TABLE FIRSTHAND.CONTRACT_SIGN_PDF (	
+	CONTRACTID NUMBER(12,0), 
+	HOUSEID NUMBER(18,0), 
+	CONTRACTTYPE NUMBER(2,0), 
+	PDFPATH VARCHAR2(100), 
+	CREATEPERSON VARCHAR2(50), 
+	CREATEDATE DATE, 
+	UPDATEPERSON VARCHAR2(50), 
+	UPDATEDATE DATE, 
+	SEALDATE DATE, 
+	SEALPERSON VARCHAR2(50)
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.CONTRACTID IS '合同ID';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.HOUSEID IS '房屋ID';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.CONTRACTTYPE IS '合同类型';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.PDFPATH IS '合同路径';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.CREATEPERSON IS '作成者';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.CREATEDATE IS '作成日期';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.UPDATEPERSON IS '更新者';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.UPDATEDATE IS '更新日期';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.SEALDATE IS '盖章人';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF.SEALPERSON IS '盖章日期';
+
+ALTER TABLE FIRSTHAND.CONTRACT_SIGN_PDF ADD CHECK (CONTRACTID IS NOT NULL);
+ALTER TABLE FIRSTHAND.CONTRACT_SIGN_PDF ADD PRIMARY KEY (CONTRACTID);
+
+CREATE TABLE FIRSTHAND.CONTRACT_SIGN_PDF_LOG (
+	LOGID NUMBER(15,0), 
+	CONTRACTID NUMBER(12,0), 
+	HOUSEID NUMBER(18,0), 
+	CONTRACTTYPE NUMBER(2,0), 
+	PDFPATH VARCHAR2(100), 
+	CREATEPERSON VARCHAR2(50), 
+	CREATEDATE DATE, 
+	UPDATEPERSON VARCHAR2(50), 
+	UPDATEDATE DATE, 
+	SEALDATE DATE, 
+	SEALPERSON VARCHAR2(50)
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.LOGID IS '日志编号';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.CONTRACTID IS '合同ID';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.HOUSEID IS '房屋ID';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.CONTRACTTYPE IS '合同类型';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.PDFPATH IS '合同路径';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.CREATEPERSON IS '作成者';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.CREATEDATE IS '作成日期';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.UPDATEPERSON IS '更新者';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.UPDATEDATE IS '更新日期';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.SEALDATE IS '盖章日期';
+COMMENT ON COLUMN FIRSTHAND.CONTRACT_SIGN_PDF_LOG.SEALPERSON IS '盖章人';
+
+ALTER TABLE FIRSTHAND.CONTRACT_SIGN_PDF_LOG ADD CHECK (LOGID IS NOT NULL);
+ALTER TABLE FIRSTHAND.CONTRACT_SIGN_PDF_LOG ADD PRIMARY KEY (LOGID);
+
+alter table FIRSTHAND.BUYERINFO add (
+	VERIFYCODE VARCHAR2(6), 
+	SIGNFLAG NUMBER(1,0), 
+	SIGNDATE DATE
+);
+COMMENT ON COLUMN FIRSTHAND.BUYERINFO.VERIFYCODE IS '6位短信验证码';
+COMMENT ON COLUMN FIRSTHAND.BUYERINFO.SIGNFLAG IS '0,未签字，1已签字 ';
+COMMENT ON COLUMN FIRSTHAND.BUYERINFO.SIGNDATE IS '签字日期 ';
+
+
+CREATE SEQUENCE  FIRSTHAND.SEQ_SIGNPDFLOGID  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 161 NOCACHE  NOORDER  NOCYCLE;
+
+CREATE TABLE FIRSTHAND.CONTRACT_SIGNPDF_LOG 
+   (	LOGID NUMBER(16,0), 
+	CONTRACTID NUMBER(14,0), 
+	CARDNO VARCHAR2(50), 
+	VERIFYCODE VARCHAR2(6), 
+	RESPONSE VARCHAR2(500), 
+	OPERATETYPE NUMBER(1,0), 
+	OPERATEDATE DATE, 
+	STATUS NUMBER(1,0)
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+;
+
+ALTER TABLE FIRSTHAND.CONTRACT_SIGNPDF_LOG ADD CHECK (LOGID IS NOT NULL);
+ALTER TABLE FIRSTHAND.CONTRACT_SIGNPDF_LOG ADD PRIMARY KEY (LOGID);
+
+Release: 已发布正式环境 , Release Date(2019-12-29)
+
+
+--2020.3.23 ph 增加只检查个人标志，1：合同买方信息中允许同时存在"个人"与"公司"两种类型，需要对类型为"个人"的买方进行限购检查
+alter table firsthand.ct_district add (xgManCheck number(2));
+update firsthand.ct_district a set a.xgManCheck =0;
+--城阳区 设置为打开
+update firsthand.ct_district a set a.xgManCheck =1 where a.code=14;
+commit;
+
+####### Release: V_20_03_25 ,Release Date(20_03_25) #######	
+
+
+--2020.4.1 ph 合同增加计价条款
+--预售合同修改
+--装修价格大写
+alter table firsthand.contract_detail_ys add(f0626 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0627 varchar2(100));
+--增加条款5,6
+alter table firsthand.contract_detail_ys add(f0628 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0629 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0630 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0631 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0632 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0633 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0634 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0635 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0636 varchar2(100));
+alter table firsthand.contract_detail_ys add(f0637 varchar2(100));
+
+--出售合同修改
+--装修价格大写
+alter table firsthand.contract_detail_cs add(f0726 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0727 varchar2(100));
+--增加条款5,6
+alter table firsthand.contract_detail_cs add(f0728 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0729 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0730 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0731 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0732 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0733 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0734 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0735 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0736 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0737 varchar2(100));
+
+
+
+--预售合同模板修改
+--装修价格大写
+alter table firsthand.contracttemplate_ys add(f0626 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0627 varchar2(100));
+--增加条款5,6
+alter table firsthand.contracttemplate_ys add(f0628 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0629 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0630 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0631 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0632 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0633 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0634 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0635 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0636 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0637 varchar2(100));
+
+--出售合同模板修改
+--装修价格大写
+alter table firsthand.contracttemplate_cs add(f0726 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0727 varchar2(100));
+--增加条款5,6
+alter table firsthand.contracttemplate_cs add(f0728 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0729 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0730 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0731 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0732 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0733 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0734 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0735 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0736 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0737 varchar2(100));
+
+--计价条款，计价3成套计价增加装修价格大写
+alter table firsthand.contract_detail_ys add(f0638 varchar2(100));
+alter table firsthand.contract_detail_cs add(f0738 varchar2(100));
+alter table firsthand.contracttemplate_ys add(f0638 varchar2(100));
+alter table firsthand.contracttemplate_cs add(f0738 varchar2(100));
+
+####### Release: V_20_04_09 ,Release Date(2020-04-09) #######	
+
+--2020.5.26 ph 合同表增加选择模板id
+alter table firsthand.contractdeal add(templateId varchar2(50));
+
+####### Release V_20_05_26,Release Date(2020-05-26) #######
+
+
+
+

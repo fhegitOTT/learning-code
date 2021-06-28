@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<wls:weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd 
+  http://www.bea.com/ns/weblogic/weblogic-web-app 
+  http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">  
+
+    <wls:context-root>/QDFH</wls:context-root> 
+    
+    <wls:virtual-directory-mapping>
+		<wls:local-path>d:/nankang/qdfhhouse/</wls:local-path>
+		<wls:url-pattern>/attachment/*</wls:url-pattern>
+	</wls:virtual-directory-mapping>
+	<!-- 解决session丢失混乱的问题 -->
+    <wls:session-descriptor>
+    	<wls:cookie-name>JSESSIONID1</wls:cookie-name>
+    	<wls:encode-session-id-in-query-params>true</wls:encode-session-id-in-query-params>
+   </wls:session-descriptor>
+	<wls:container-descriptor>
+		<servlet-reload-check-secs>0</servlet-reload-check-secs>
+		<resource-reload-check-secs>0</resource-reload-check-secs>
+	</wls:container-descriptor>
+</wls:weblogic-web-app>
+

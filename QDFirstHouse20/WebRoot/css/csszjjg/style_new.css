@@ -1,0 +1,387 @@
+/* CSS Document 2008-8-8 nk lhl*/
+
+* {
+	font-size:9pt;
+}
+
+body {
+	SCROLLBAR-FACE-COLOR: #6e9ec8; 
+	SCROLLBAR-HIGHLIGHT-COLOR: #3974ac;
+	SCROLLBAR-SHADOW-COLOR: #3974ac;
+	SCROLLBAR-3DLIGHT-COLOR: #e2eaf4;
+	SCROLLBAR-ARROW-COLOR: #e2eaf4;
+	SCROLLBAR-TRACK-COLOR: #e2eaf4;
+	SCROLLBAR-DARKSHADOW-COLOR: #e2eaf4;
+}
+.bg_line{
+	font-size:15px;
+	color:#000000;
+} 
+
+img {
+	border:none;
+}
+
+.bodyTop {
+	margin:0;
+	padding:0;
+}
+
+.bodyBottom {
+	margin:0;
+	padding:0;
+	background:#386998;
+}
+
+.bodyBottom p {
+	color:#C7D9EB;
+	text-align:center;
+	margin-top:6px;
+}
+
+.bodyMenu {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+
+.bodyRight {
+	margin:0;
+	padding:0px;
+	text-align:center;
+}
+
+form {
+	margin:0;
+	padding:0px;
+}
+
+.inputStyle {
+	border:1px solid #cfdefd;
+}
+.biaodanbian {
+	border: 1px solid #cfdefd;
+}
+
+input {
+	border: 1px solid #cfdefd;
+}
+
+.buttonStylefx1 {
+	width: 82px;
+	line-height: 25px;
+	text-align: center;
+	font-weight: bold;
+	color: #666666;
+	text-shadow:1px 1px 1px #333;
+	border-radius: 5px;
+	margin:0 2px 2px 0;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.buttonStyle {
+background-image: url(../images/an22.jpg);
+	cursor:hand;
+	margin: 0px;
+	padding: 0px;
+	height: 25px;
+	width: 82px;
+	color: #FFFFFF;
+	background-attachment:scroll;background-position:center;border:0 solid #000000;
+}
+.buttonStyle22 {
+background-image: url(../images/an33.jpg);
+	cursor:hand;
+	margin: 0px;
+	padding: 0px;
+	height: 25px;
+	width: 82px;
+	color: #FFFFFF;
+	background-attachment:scroll;background-position:center;border:0 solid #000000;
+}
+
+/* topFrame begin*/
+.top_top {
+	width:100%;
+	height:70px;
+	background-color: #1983CD;
+	background-image: url(../images/index_01.jpg);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.user {
+	position:absolute;
+	top:30px;
+	right:10px;
+	color:#000;
+}
+
+.user p{
+	margin-bottom:10px;	
+}
+.user a {
+	color:#000000;
+	text-decoration: none;
+}
+.user a:hover{
+	color:#AB4848;	
+}
+/*- Menu begin--------------------------- */
+
+#divMenu {
+	width:100%;
+	background:#daecfa;
+	border-bottom:1px solid #24618E;
+}
+.menu {
+	font-size:93%;
+	line-height:normal;
+	margin:0;
+	float:left;
+	padding:4px 2px 0 2px;
+	list-style:none;
+}
+.menu li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+.menu a {
+	float:left;
+	background:url("../images/menuLeft.gif") no-repeat left top;
+	margin:0;
+	padding:0 0 0 5px;
+	text-decoration:none;
+}
+/*.menu a span {
+	float:left;
+	display:block;
+	background:url("../images/menuRight.gif") no-repeat right top;
+	padding:5px 15px 4px 6px;
+	color:#24618E;
+	cursor:hand;
+}*/
+.menu a span {
+	float:left;
+	display:block;
+	background:url("../images/menuRight.gif") no-repeat right top;
+	padding:5px 15px 4px 6px;
+	color:#fff;
+	cursor:hand;
+}
+
+.menu a:hover span {
+	color:#FFF;
+}
+.menu a:hover {
+	background-position:0% -42px;
+}
+.menu a:hover span {
+	background-position:100% -42px;
+}
+
+
+
+/*- menuEd begin--------------------------- */
+
+.menu_ed {
+	font-size:93%;
+	line-height:normal;
+	margin:0;
+	float:left;
+	padding:4px 2px 0 2px;
+	list-style:none;
+}
+.menu_ed li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+.menu_ed a {
+	float:left;
+	background:url("../images/menuLeft.gif") no-repeat 0% -42px;
+	margin:0;
+	padding:0 0 0 5px;
+	text-decoration:none;
+}
+.menu_ed a span {
+	float:left;
+	display:block;
+	background:url("../images/menuRight.gif") no-repeat 100% -42px;
+	padding:5px 15px 4px 6px;
+	color:#fff;
+	cursor:hand;
+}
+.menu_ed a:hover span {
+	color:#FFF;
+}
+.menu_ed a:hover {
+	background-position:0% -42px;
+}
+.menu_ed a:hover span {
+	background-position:100% -42px;
+}
+
+/* topFrame end*/
+
+/*menuFrame begin*/
+.menuLeft {
+	height:100%;
+	width:175px;
+	float:left;
+	background-color: #E9F3FC;
+}
+
+.menuLeft ul{
+	list-style:none;
+	margin:0 3px;
+	padding:0;
+}
+
+
+.leftMenum_1{
+	width:168px;
+	height:17px;
+	background:url(../images/index_09.jpg) no-repeat;
+	cursor:hand;
+	padding-top:7px;
+	margin:5px 0;
+}
+
+.leftMenum_2{
+	width:168px;
+	height:17px;
+	background:url(../images/index_19.jpg) no-repeat;
+	cursor:hand;
+	padding-top:7px;
+	margin:5px 0;
+	color:#fff;
+}
+
+.menuLeft center {
+	margin-top:5px;	
+}
+
+.menuLeft a {
+	font-weight:bold;
+	color:#595b8e;
+	text-decoration:none;
+}
+
+.menuRight {
+	width:14px;
+	height:100%;
+	background:url(../images/index_12.jpg);
+	float:left;
+}
+/*enuFrame end*/
+
+/*rightFrame begin*/
+.current {
+	width:100%;
+	height:25px;
+	background:url(../images/index_06.jpg);
+}
+
+.current span {
+	position:relative;
+	left:22px;
+	top:5px;
+}
+
+.search {
+	border:1px dotted #bbb;
+	border-width:0 0 1px 0;
+	padding:5px 0;
+	width:96%;
+	margin:0 auto;
+}
+
+.tableTitle {
+	height:24px;
+	width:100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	text-align:left;
+	background-color: #70BBFF;
+	background-image: url(../images/index_15.jpg);
+	background-repeat: no-repeat;
+	color:#FFF;
+}
+.tableTitle_result {
+	height:24px;
+	width:100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	text-align:left;
+	background-color: #70BBFF;
+	background-image: url(../images/index_16.jpg);
+	background-repeat: no-repeat;
+	color:#DDA;
+}
+.xdabian {
+	border: 1px solid #70BBFF;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 5px;
+	padding-left: 2px;
+}
+
+
+.tableTitle span {
+	position:relative;
+	top:5px;
+	left:25px;
+	
+}
+
+.tableInfo {
+	width:100%;
+	margin:0 auto;
+	border-collapse:collapse;
+}
+
+.tableInfo td,th{
+	border:1px solid #cfdefd;
+	line-height:1.6em;
+	padding-left:10px;
+}
+
+.tableInfo .bgColor{
+	text-align:right;
+	line-height:2em;
+	background-color: #E9F3FC;
+}
+
+.tableInfo .divCenterColor{
+	text-align:center;
+	line-height:2em;
+	background-color: #E9F3FC;
+}
+.tableInfo .bgColor_darkbule{
+	text-align:right;
+	line-height:2em;
+	background-color: #78BFDA;
+}
+
+.tableInfo .bgColor td {
+	text-align:center;
+}
+
+.dissentTdColor{
+    text-align:center;
+	line-height:2em;
+	background-color: #E9F3FC;
+}
+/*rightFrame end*/
+
+
+
